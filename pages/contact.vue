@@ -56,6 +56,49 @@
         </div>
       </div>
     </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-4 mb-4">
+        <div
+          class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
+        >
+          <h1>Join our mailing list</h1>
+          <p>
+            Keep in the loop with all things about the society through our
+            mailing list
+          </p>
+
+         <form method="post" action="https://listmonk.services.dylankainth.com/subscription/form" class="listmonk-form">
+    <div>
+        <input type="hidden" name="nonce" />
+        <p><input class="form-control" type="email" name="email" required placeholder="E-mail" /></p>
+        <p><input class="form-control" type="text" name="name" placeholder="Name (optional)" /></p>
+      
+        <p class="d-none">
+          <input id="4bba4" type="checkbox" name="l" checked value="4bba4380-94ea-47be-9227-a870d1cefe95" />
+          <label for="4bba4">CSS Society List</label>
+        </p>
+        <button class="btn btn-outline-light mt-auto" type="submit" value="Subscribe">Submit</button>
+    </div>
+</form>
+
+        </div>
+      </div>
+      <div class="col-md-8 mb-4">
+        <div
+          class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
+        >
+          <h1>Ping us an email</h1>
+          <p>
+            You can email us at <a class="mailaddress" href='mailto:19Kainthd@harrowschool.org.uk'>19Kainthd@harrowschool.org.uk</a>, <a class="mailaddress" href='mailto:19SongY@harrowschool.org.uk'>19SongY@harrowschool.org.uk</a> or <a class="mailaddress" href='mailto:18vanaekenm@harrowschool.org.uk'>18vanaekenm@harrowschool.org.uk</a>.
+            <br><br>
+            You could even email us at <a class="mailaddress" href='mailto:19Kainthd@harrowschool.org.uk,19SongY@harrowschool.org.uk,18vanaekenm@harrowschool.org.uk'>all three addresses</a>  if you're feeling particularly enthusiastic
+          </p>
+        
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 

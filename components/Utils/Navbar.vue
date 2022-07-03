@@ -1,16 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-lg fixed-top shadow-lg">
     <div class="container-fluid">
-      <a class="navbar-brand d-block d-sm-none" href="#">
+      <a class="navbar-brand d-block d-sm-none" href="/">
         <img src="~/assets/templogowhite.png" alt="" width="30" height="30" />
 
         Harrow School CSS</a
       >
-      <a class="navbar-brand d-none d-sm-block d-md-none" href="#">
+      <a class="navbar-brand d-none d-sm-block d-md-none" href="/">
         <img src="~/assets/templogowhite.png" alt="" width="30" height="30" />
         Harrow Computer Science Society</a
       >
-      <a class="navbar-brand d-none d-md-block" href="#">
+      <a class="navbar-brand d-none d-md-block" href="/">
         <img src="~/assets/templogowhite.png" alt="" width="30" height="30" />
         Harrow School Computer Science Society</a
       >

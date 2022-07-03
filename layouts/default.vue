@@ -13,6 +13,7 @@
 }
 body {
   background-color: #fffbfe !important;
+
 }
 
 .page-enter-active,
