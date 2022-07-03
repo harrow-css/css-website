@@ -19,7 +19,7 @@ export default {
           'sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor',
         crossorigin: 'anonymous',
       },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '~/assets/templogowhite.png' }
     ],
     script: [
       {
