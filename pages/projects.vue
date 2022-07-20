@@ -8,51 +8,43 @@
           </div>
           <div class="col my-auto">
             <p class="col-md-8 fs-4 text-md-end float-md-end">
-              This stuff may be cool.
+              Things I've worked on.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row align-items-md-stretch">
-      <div class="col-md-12 mb-4">
-        <div class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column ">
-          <h1>404: Projects not found</h1>
-          <p>We actually haven't written any articles for our projects page yet, since this website is new.</p>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
 
-          <img src="https://http.cat/404"/>
-        </div>
+      
+
+      <div class="col" v-for="(project, id) in this.$store.state.projects" v-bind:key="id">
+        <ProjectCard  :projectdata="project" :projectid="id"/>
       </div>
+
+
     </div>
+
     
 
   </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style scoped>
 
-.secondarystyledcard > h1 {
-  font-size:2rem
-}
-
-.secondarystyledcard > p {
-  font-size:1rem
-}
 
 .primarystyledcard {
-  background-color: #393939;
-  color: #fffbfe;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("~assets/images/iotdevkit.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  
+  transition: 0.3s;
 }
 
-.secondarystyledcard {
-  background-color: #7A7D7D;
-  color: #fffbfe;
+.primarystyledcard:hover {
+  background-position: 50% 65%;
 }
-
 
 </style>
