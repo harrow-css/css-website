@@ -1,8 +1,18 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top container pt-3">
+  <nav class="navbar navbar-expand-lg fixed-top shadow-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        Dylan Kainth</a
+      <a class="navbar-brand d-block d-sm-none" href="/">
+        <img src="~/assets/templogowhite.png" alt="" width="30" height="30" />
+
+        Harrow School CSS</a
+      >
+      <a class="navbar-brand d-none d-sm-block d-md-none" href="/">
+        <img src="~/assets/templogowhite.png" alt="" width="30" height="30" />
+        Harrow Computer Science Society</a
+      >
+      <a class="navbar-brand d-none d-md-block" href="/">
+        <img src="~/assets/templogowhite.png" alt="" width="30" height="30" />
+        Harrow School Computer Science Society</a
       >
       <button
         class="navbar-toggler"
@@ -21,7 +31,7 @@
       >
         <div class="offcanvas-header">
           <h2 class="offcanvas-title" id="offcanvasNavbarLabel">
-            Dylan Kainth
+            Harrow School Computer Science Society
           </h2>
           <button
             type="button"
@@ -50,7 +60,7 @@
 export default {
   data(){
     return {
-      routes : {"Home":"/","Projects":"/projects","Contact":"/contact"}
+      routes : {"Home":"/","About":"/about","Projects":"/projects","Contact":"/contact"}
     }
   }
 }
@@ -58,15 +68,12 @@ export default {
 
 <style scoped>
 .navbar {
-  background-color: transparent;
+  background-color: #393939;
   position: relative;
 }
 
 a.navbar-brand {
   color: #fffbfe;
-  font-size:1.8rem;
-  font-weight: 600
-
 }
 
 /* offcanvas */
@@ -91,10 +98,13 @@ a.navbar-brand {
       color:#FFFBFE
   } 
   .offcanvas-body > .navbar-nav > .nav-item {
-      font-size:1.6rem;
-      font-weight: 500;
+      font-size:1.2rem;
+      font-weight: 400;
+      
   }
- 
+  a.navbar-brand.d-none.d-md-block {
+      font-size:1.5rem;
+  }
 }
 
 .offcanvas-title {

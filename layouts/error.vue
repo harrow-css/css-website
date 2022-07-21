@@ -5,9 +5,7 @@
     <h1 v-else>An error occurred - {{ error.statusCode }} </h1>
    
     
-    <nuxt-img :src="'https://http.cat/'+error.statusCode"/>
-
-    <nuxt-img :src="'https://httpstatusdogs.com/nuxt-img/'+error.statusCode+'.jpg' " />
+    <img :src="'https://http.cat/'+error.statusCode"/>
     
     <NuxtLink class="btn btn-outline-dark" to="/">Go back to home page</NuxtLink>
   </div>

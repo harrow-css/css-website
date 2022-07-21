@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Dylan Kainth',
+    title: 'css-website-mixed',
     htmlAttrs: {
       lang: 'en'
     },
@@ -19,8 +19,7 @@ export default {
           'sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor',
         crossorigin: 'anonymous',
       },
-      { rel: 'icon', href: '~/assets/templogowhite.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+      { rel: 'icon', type: 'image/png', href: '~/assets/templogowhite.png' }
     ],
     script: [
       {
@@ -41,14 +40,13 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    /* '@nuxt/image', if static */ 
+    '@nuxtjs/google-fonts'
   ],
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/markdownit',
-    '@nuxt/image'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -58,11 +56,9 @@ export default {
   build: {
   },
 
-  markdownit: {
-    runtime: true // Support `$md()`
-  },
-  image: {
-    // Options
+  googleFonts: {
+    families: {
+      Poppins: true
+    }
   }
-
 }

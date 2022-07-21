@@ -1,21 +1,19 @@
 <template>
   <div>
     <UtilsNavbar />
-    <div class="container py-3">
+    <div class="container py-5">
       <Nuxt />
     </div>
   </div>
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
-html {
+* {
+  font-family: Poppins;
 }
 body {
-  background-color: #1b1b1e !important;
-  color: #d8dbe2;
-  font-family: Inter, sans-serif !important;
+  background-color: #fffbfe !important;
+
 }
 
 .page-enter-active,
