@@ -15,6 +15,7 @@
     "nuxt": "^2.15.7"
   },
   "devDependencies": {
+    "@nuxt/image": "^0.7.1",
     "@nuxtjs/google-fonts": "^2.0.0",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.3.2"

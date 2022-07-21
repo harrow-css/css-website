@@ -11,14 +11,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 html {
-  
-
 }
 body {
-  background-color: #1B1B1E !important;
-  color: #D8DBE2;
+  background-color: #1b1b1e !important;
+  color: #d8dbe2;
   font-family: Inter, sans-serif !important;
-
 }
 
 .page-enter-active,
@@ -29,5 +26,4 @@ body {
 .page-leave-to {
   opacity: 0;
 }
-
 </style>

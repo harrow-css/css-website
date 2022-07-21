@@ -2,8 +2,8 @@
   <div>
     <div class="p-5 mb-4 tertiarystyledcard rounded-3 shadow">
       <div class="row align-items-md-stretch">
-        <div class="col-md-6 mb-4">
-          <h1 class="display-3">{{ projectdata.title }}</h1>
+        <div class="col-lg-6 mb-4 position-relative">
+          <h1 class="display-3" style="word-wrap: break-word; ">{{ projectdata.title }}</h1>
 
           <div class="d-flex flex-column">
             <ul class="d-flex list-unstyled mt-auto">
@@ -19,51 +19,48 @@
                 }}</span>
                 <small>{{ projectdata.type.status }}</small>
               </li>
+              <li class="d-flex align-items-center me-auto">
+                <span class="me-2 material-icons">event</span>
+                <small>{{ projectdata.timeframedescription }}</small>
+              </li>
             </ul>
           </div>
 
-          <div v-html="$md.render(projectdata.longdescription)"></div>
+          <div class="d-flex flex-column">
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="d-flex align-items-center me-auto">
+                <span class="me-2 material-icons">tag</span>
+                <small>Tags: <span v-for="(tag,index) in projectdata.tags" v-bind:key="tag"><Nuxt-Link class="taglink" :to="'/tag/'+tag">{{tag}}</Nuxt-Link><span v-if="index!=projectdata.tags.length-1">, </span></span></small>
+              </li>
+            </ul>
+          </div>
+
+
+          <div v-html="description" class="description"></div>
+
+          <div class="bottom-0" v-if="projectdata.buttons">
+            <a v-for="button in projectdata.buttons" v-bind:key="button.text" type="button" :class="'btn btn-sm btn-'+button.color+' m-2'" :href="button.hyperlink" target="_blank">{{button.text}}</a>
+          </div>  
 
         </div>
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-6 mb-4 order-first order-lg-0" v-if="projectdata.longimages.length >0">
           <div
             id="carouselExampleIndicators"
             class="carousel carousel-fade slide"
             data-bs-ride="true"
           >
-            <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
-            </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner rounded-3">
               <div class="carousel-item active">
-                <img src="https://images.unsplash.com/photo-1658238124313-d69e9f20949b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" class="d-block w-100" alt="..." />
+                <img :src="require(`~/assets/images/projects/${projectdata.longimages[0]}`)" class="d-block w-100" alt="..." />
               </div>
-              <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1658250585128-10ce39a7d198?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" class="d-block w-100" alt="..." />
+              <div class="carousel-item" v-for="image in projectdata.longimages.slice(1)" v-bind:key="image">
+                <img :src="require(`~/assets/images/projects/${image}`)" class="d-block w-100" alt="..." />
               </div>
-              <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1658232190602-be6cd5b976f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" class="d-block w-100" alt="..." />
-              </div>
+              <!-- <div class="carousel-item">
+                <img :src="require(`~/assets/images/projects/${projectdata.image}`)" class="d-block w-100 first-carousel-image" alt="..." />
+              </div> -->
             </div>
+            <div v-if="projectdata.longimages.length >1">
             <button
               class="carousel-control-prev"
               type="button"
@@ -88,6 +85,7 @@
               ></span>
               <span class="visually-hidden">Next</span>
             </button>
+            </div>
           </div>
         </div>
 
@@ -100,14 +98,58 @@
 export default {
   data() {
     return {
-      projectdata: this.$store.state.projects[this.$route.params.id]
+      description: '',
+      model: '# Hello World!',
+      projectdata: this.$store.state.projects[this.$route.params.id],
     }
   },
+  mounted(){
+    var a = ((this.$store.state.projects[this.$route.params.id].longdescription))
+    this.model = a
+    this.description = this.$md.render(a)
+  }
 }
 </script>
+
+<style>
+
+a { color: white}
+a:link{  color:white};
+a:visited{  color:rgb(221, 221, 221)};
+a:hover{  color:rgb(194, 194, 194)};
+a:active{  color:rgb(221, 221, 221)};
+
+</style>
 
 <style scoped>
 .tertiarystyledcard {
   background-color: #373f51;
 }
+
+.first-carousel-image {
+  filter : brightness(0.5)
+}
+
+.carousel-item {
+  height: 60vh
+}
+
+.carousel-item > img {
+  height: inherit;
+  object-fit:cover;
+}
+
+.taglink:link {
+  color:white
+}
+.taglink:visited {
+  color:rgb(221, 221, 221)
+}
+.taglink:hover {
+  color:rgb(194, 194, 194)
+}
+.taglink:active {
+  color:rgb(221, 221, 221)
+}
+
 </style>
