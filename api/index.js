@@ -1,5 +1,11 @@
-const express = require('express');
+const express = require('express')
+const app = express()
 
-const app = express.Router();
+app.get('/', (req, res) => {
+    res.json({"hello":"wow"})
+})
 
-module.exports = app
+module.exports = {
+   path: '/api',
+   handler: app
+}
