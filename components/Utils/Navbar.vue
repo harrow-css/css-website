@@ -60,7 +60,7 @@
 export default {
   data(){
     return {
-      routes : {"Home":"/","About":"/about","Projects":"/projects","Contact":"/contact"}
+      routes : {"Home":"/","About":"/about","Projects":"/projects","Hackathons":"/hackathons","Contact":"/contact"}
     }
   }
 }

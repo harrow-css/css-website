@@ -4,13 +4,11 @@
       <div class="container-fluid py-5">
         <div class="row align-items-start">
           <div class="col my-auto">
-            
-            <h1 class="display-2 fw-bold">The Computer Science Society.</h1>
-
+            <h1 class="display-2 fw-bold">Hackathons</h1>
           </div>
           <div class="col my-auto">
             <p class="col-md-8 fs-4 text-md-end float-md-end">
-              We're a group of Computer Scientists at Harrow School
+              This stuff may be cool.
             </p>
           </div>
         </div>
@@ -18,27 +16,24 @@
     </div>
 
     <div class="row align-items-md-stretch">
-      <div class="col-md-6 mb-4">
+      <div class="col-md-12 mb-4">
         <div class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column ">
-          <h1>Get Involved</h1>
-          <p>Contact the society leadership and get involved with events and projects.</p>
-          <Nuxt-Link class="btn btn-outline-light mt-auto" to="contact" type="button">Go</Nuxt-Link>
+          <h1>404: Projects not found</h1>
+          <p>We actually haven't written any articles for our projects page yet, since this website is new.</p>
+
+          <img src="https://http.cat/404"/>
         </div>
       </div>
-      <div class="col-md-6 mb-4">
-        <div class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column">
-          <h1>Check out our previous projects</h1>
-          <p>Have a look at our recent projects and apply to become a beta tester for new ones when they arrive.</p>
-          <Nuxt-Link class="btn btn-outline-light mt-auto" type="button" to="projects">Go</Nuxt-Link>
-        </div>
-      </div>
-      
     </div>
+    
+
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+    middleware: "isAuthenticated"
+}
 </script>
 
 <style scoped>
