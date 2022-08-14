@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 //   process.env.DB_PASSWORD +
 //   "@cluster0.qh6jrum.mongodb.net/?retryWrites=true&w=majority";
 
-const MONGOOSE_URI = process.env.MONGOOSE_STRING
+const MONGOOSE_URI = "mongodb+srv://"+process.env.MONGOOSE_USERNAME+":"+process.env.MONGOOSE_PASSWORD+"@cluster0.9ctff.mongodb.net/?retryWrites=true&w=majority"
 
 mongoose
   .connect(MONGOOSE_URI, { useNewUrlParser: true })
