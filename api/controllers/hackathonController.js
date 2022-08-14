@@ -1,10 +1,10 @@
-const contentModel = require("../models/contentModel");
+const hackathonModel = require("../models/hackathonModel");
 
 // a function to get the questions from the mongo database
-exports.getQuestions = async (req, res, next) => {
+exports.getHackathons = async (req, res, next) => {
   try {
-    const questions = await contentModel.find();
-    res.status(200).json(questions);
+    const hackathons = await hackathonModel.find({}, 'hackathonName hackathonStartDate hackathonEndDate');
+    res.status(200).json(hackathons);
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

@@ -19,7 +19,8 @@ export default {
           'sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor',
         crossorigin: 'anonymous',
       },
-      { rel: 'icon', type: 'image/png', href: '~/assets/templogowhite.png' }
+      { rel: 'icon', type: 'image/png', href: '/templogodark.png', media:"(prefers-color-scheme: light)" },
+      { rel: 'icon', type: 'image/png', href: '/templogowhite.png', media:"(prefers-color-scheme: dark)" }
     ],
     script: [
       {
@@ -118,12 +119,12 @@ export default {
   // },
 
 
-  // serverMiddleware: ["~/api/app.js"],
+  serverMiddleware: ["~/api/app.js"],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  // axios: {
-  //   baseURL: "http://127.0.0.1:3000/",
-  // },
+  axios: {
+    baseURL: "http://127.0.0.1:3000/api/",
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

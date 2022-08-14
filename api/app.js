@@ -5,9 +5,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 // routes
-const authRouter = require("./routes/authRouter");
-const contentRouter = require("./routes/contentRouter");
-const adminRouter = require("./routes/adminRouter");
+const hackathonRouter = require("./routes/hackathonRouter");
+const usersRouter = require("./routes/usersRouter");
 
 const app = express();
 
@@ -23,9 +22,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/auth/", authRouter);
-app.use("/admin/", adminRouter);
-app.use("/content/", contentRouter);
+app.use("/hackathons/", hackathonRouter);
+app.use("/users/", usersRouter);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -47,7 +45,7 @@ app.get("/", (req, res) => {
 //   process.env.DB_PASSWORD +
 //   "@cluster0.qh6jrum.mongodb.net/?retryWrites=true&w=majority";
 
-const MONGOOSE_URI = 
+const MONGOOSE_URI = process.env.MONGOOSE_STRING
 
 mongoose
   .connect(MONGOOSE_URI, { useNewUrlParser: true })

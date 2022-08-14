@@ -24,4 +24,5 @@ body {
 .page-leave-to {
   opacity: 0;
 }
+
 </style>

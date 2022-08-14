@@ -42,15 +42,51 @@
         </div>
       </div>
     </div>
+
+    <div class="row mb-2">
+      <div class="col-md-6" v-for="hackathon in hackathons" v-bind:key="hackathon._id">
+        <div
+          class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative tertiarystyledcard"
+        >
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">{{hackathon._id}}</strong>
+            <h3 class="mb-0">{{hackathon.hackathonName}}</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content.
+            </p>
+            <a href="#" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg
+              class="bd-placeholder-img"
+              width="200"
+              height="250"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: Thumbnail"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"></rect>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   middleware: 'isAuthenticated',
-  asyncData(context) {
+  async asyncData(context) {
     return {
       userdata: context.app.$auth.$storage.getUniversal('jwt_decoded'),
+      hackathons: await context.app.$axios.$get('/hackathons/getall')
     }
   },
 }
@@ -73,5 +109,10 @@ export default {
 .secondarystyledcard {
   background-color: #7a7d7d;
   color: #fffbfe;
+}
+
+.tertiarystyledcard {
+  background-color: #D0CFCF;
+  color: #0E1242;
 }
 </style>

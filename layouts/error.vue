@@ -7,7 +7,8 @@
     
     <img :src="'https://http.cat/'+error.statusCode"/>
     
-    <NuxtLink class="btn btn-outline-dark" to="/">Go back to home page</NuxtLink>
+    <br> 
+    <NuxtLink class="btn btn-outline-dark my-3" to="/">Go back to home page</NuxtLink>
   </div>
 </template>
 
