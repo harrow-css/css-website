@@ -42,13 +42,15 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              
-            <li class="nav-item" v-for="(value,key) in routes" v-bind:key="key">
-                <NuxtLink class="nav-link" :to="value">
-                    {{key}}
-                </NuxtLink>
+            <li
+              class="nav-item"
+              v-for="(value, key) in routes"
+              v-bind:key="key"
+            >
+              <NuxtLink class="nav-link" :to="value" v-on:click.native="hideoffcanvas">
+                {{ key }}
+              </NuxtLink>
             </li>
-          
           </ul>
         </div>
       </div>
@@ -58,11 +60,24 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      routes : {"Home":"/","About":"/about","Hackathons":"/hackathons","Contact":"/contact"}
+      routes: {
+        Home: '/',
+        About: '/about',
+        Hackathons: '/hackathons',
+        Contact: '/contact',
+      },
     }
-  }
+  },
+  mounted() {
+    this.bsOffcanvas = new bootstrap.Offcanvas('#offcanvasNavbar')
+  },
+  methods: {
+    hideoffcanvas() {
+      this.bsOffcanvas.hide()
+    },
+  },
 }
 </script>
 
@@ -78,42 +93,44 @@ a.navbar-brand {
 
 /* offcanvas */
 @media only screen and (max-width: 992px) {
-  .offcanvas-body > .navbar-nav > .nav-item > a.nav-link.nuxt-link-exact-active.nuxt-link-active {
-      color:#393939
-  } 
+  .offcanvas-body
+    > .navbar-nav
+    > .nav-item
+    > a.nav-link.nuxt-link-exact-active.nuxt-link-active {
+    color: #393939;
+  }
   .offcanvas-body > .navbar-nav > .nav-item > a.nav-link {
-      color:#7A7D7D
-  } 
+    color: #7a7d7d;
+  }
   .offcanvas-body > .navbar-nav > .nav-item {
-      font-size:2rem
+    font-size: 2rem;
   }
 }
 
 /* desktop */
 @media only screen and (min-width: 992px) {
   .offcanvas-body > .navbar-nav > .nav-item > a.nav-link {
-      color:#7A7D7D
-  } 
+    color: #7a7d7d;
+  }
   .offcanvas-body > .navbar-nav > .nav-item > a.nuxt-link-exact-active {
-      color:#FFFBFE
-  } 
+    color: #fffbfe;
+  }
   .offcanvas-body > .navbar-nav > .nav-item {
-      font-size:1.2rem;
-      font-weight: 400;
-      
+    font-size: 1.2rem;
+    font-weight: 400;
   }
   a.navbar-brand.d-none.d-md-block {
-      font-size:1.5rem;
+    font-size: 1.5rem;
   }
 }
 
 .offcanvas-title {
-  color: #0E1242;
+  color: #0e1242;
   font-weight: 600;
-  font-size:2.5rem
+  font-size: 2.5rem;
 }
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath  stroke='rgba(255,251,254,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath  stroke='rgba(255,251,254,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .offcanvas {

@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="row align-items-md-stretch">
+    <div class="row align-items-md-stretch mb-4">
       <div class="col-md-12 mb-4">
         <div
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div class="row mb-2">
+    <!-- <div class="row mb-2">
       <div class="col-md-6" v-for="hackathon in hackathons" v-bind:key="hackathon._id">
         <div
           class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative tertiarystyledcard"
@@ -76,7 +76,45 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div
+        class="col"
+        v-for="hackathon in hackathons"
+        v-bind:key="hackathon._id"
+      >
+      <Nuxt-Link :to="'/hackathons/'+hackathon._id" style="text-decoration: none;">
+        <div
+          class="card secondarystyledcard lg-3 rounded-3 shadow border-0"
+          style="max-width: 540px"
+        >
+          <div class="row g-0">
+            <div class="col-xxl-4">
+              <img class="img-fluid rounded-start" :src="hackathon.hackathonImage"/>
+            </div>
+            <div class="col-xxl-8">
+              <div class="card-body">
+                <h5 class="card-title">{{hackathon.hackathonName}}</h5>
+                <p class="card-text">
+                  
+                <small>Hosted by {{hackathon.hackathonHost}}</small> <br>
+
+                
+
+                <small>Started {{$moment(hackathon.hackathonStartDate).format('MMMM d, YYYY')}}</small> <br>
+                <small>Ended {{$moment(hackathon.hackathonEndDate).format('MMMM d, YYYY')}}</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </Nuxt-Link>
+      </div>
     </div>
+
+
+
   </div>
 </template>
 
@@ -86,9 +124,9 @@ export default {
   async asyncData(context) {
     return {
       userdata: context.app.$auth.$storage.getUniversal('jwt_decoded'),
-      hackathons: await context.app.$axios.$get('/hackathons/getall')
+      hackathons: await context.app.$axios.$get('/hackathons/getall'),
     }
-  },
+  }
 }
 </script>
 
@@ -109,10 +147,5 @@ export default {
 .secondarystyledcard {
   background-color: #7a7d7d;
   color: #fffbfe;
-}
-
-.tertiarystyledcard {
-  background-color: #D0CFCF;
-  color: #0E1242;
 }
 </style>

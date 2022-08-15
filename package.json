@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^2.0.0",
+    "@nuxtjs/moment": "^1.6.1",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.3.2"
   }
