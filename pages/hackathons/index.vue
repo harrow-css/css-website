@@ -90,10 +90,10 @@
           style="max-width: 540px"
         >
           <div class="row g-0">
-            <div class="col-xxl-4">
+            <div class="col-md-4 d-none d-xxl-block">
               <img class="img-fluid rounded-start" :src="hackathon.hackathonImage"/>
             </div>
-            <div class="col-xxl-8">
+            <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">{{hackathon.hackathonName}}</h5>
                 <p class="card-text">
