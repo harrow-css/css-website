@@ -1,0 +1,5 @@
+{
+    "configuration": "role=master,cache=on,speed=120,opt=small,maxqspi=50,usbstack=arduino,debug=off,txrxled=on",
+    "board": "Seeeduino:samd:seeed_wio_terminal",
+    "port": "COM11"
+}

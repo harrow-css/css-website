@@ -26,3 +26,26 @@ exports.getHackathon = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getHackathonQuestion = async (req, res, next) => {
+  // get the question id from the request
+  const hackathonId = req.params.hackathonId;
+  const questionId = req.params.questionId;
+  try {
+    const hackathon = await hackathonModel.findById(hackathonId);
+    const questions = Object.fromEntries(hackathon.questions)
+
+    // console.log(questions)
+
+    // var question = {};
+
+    // question[questionId] = questions[questionId];
+
+    res.status(200).json(questions[questionId]);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};

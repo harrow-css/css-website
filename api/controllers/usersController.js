@@ -5,8 +5,6 @@ exports.postUser = async (req, res, next) => {
   try {
     const userdata = req.body.data
 
-    console.log(userdata)
-
     userModel.create(
       {
         family_name: userdata.family_name,
