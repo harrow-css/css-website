@@ -31,7 +31,10 @@
                 {{ hackathon.hackathonName }}
               </h3>
 
-              <div class="mt-3" v-html="$md.render(question.questionDescription)"></div>
+              <div
+                class="mt-3"
+                v-html="$md.render(question.questionDescription)"
+              ></div>
             </div>
           </div>
         </div>
@@ -42,44 +45,36 @@
       <div class="col-md-12 mb-4">
         <div
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
-        >
-          <div class="row">
-            <div class="col-md-12">
-              <h1 class="fw-bold">AutoSolution</h1>
-              
-            </div>
-          </div>
+        >   
+        
+          <Autosolution :questionTests="question.questionTests"/>
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
+import Autosolution from "../../../components/Autosolution.vue";
 export default {
-  middleware: 'isAuthenticated',
-  computed: {
-    // a computed getter
-    questionnumber: function (context) {
-      // `this` points to the vm instance
-      return parseInt(context.$route.params.questionId)
+    middleware: "isAuthenticated",
+    computed: {
+        // a computed getter
+        questionnumber: function (context) {
+            // `this` points to the vm instance
+            return parseInt(context.$route.params.questionId);
+        },
     },
-  },
-  async asyncData(context) {
-    return {
-      hackathon: await context.app.$axios.$get(
-        '/hackathons/getone/' + context.params.hackathonId
-      ),
-      question: await context.app.$axios.$get(
-        '/hackathons/getonequestion/' +
-          context.params.hackathonId +
-          '/' +
-          context.params.questionId
-      ),
-    }
-  },
+    async asyncData(context) {
+        return {
+            hackathon: await context.app.$axios.$get("/hackathons/getone/" + context.params.hackathonId),
+            question: await context.app.$axios.$get("/hackathons/getonequestion/" +
+                context.params.hackathonId +
+                "/" +
+                context.params.questionId),
+        };
+    },
+    components: { Autosolution }
 }
 </script>
 

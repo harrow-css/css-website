@@ -3,13 +3,13 @@ export default {
   head: {
     title: 'css-website-mixed',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       {
@@ -19,8 +19,18 @@ export default {
           'sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor',
         crossorigin: 'anonymous',
       },
-      { rel: 'icon', type: 'image/png', href: '/templogodark.png', media:"(prefers-color-scheme: light)" },
-      { rel: 'icon', type: 'image/png', href: '/templogowhite.png', media:"(prefers-color-scheme: dark)" }
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/templogodark.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/templogowhite.png',
+        media: '(prefers-color-scheme: dark)',
+      },
     ],
     script: [
       {
@@ -29,51 +39,39 @@ export default {
           'sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2',
         crossorigin: 'anonymous',
       },
-    ]
+      { src: 'https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/google-fonts',
-
-    '@nuxtjs/moment',
-
-  ],
-
-
-
-  
+  buildModules: ['@nuxtjs/google-fonts', '@nuxtjs/moment'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/markdownit'
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/markdownit'],
 
-  
   markdownit: {
-    runtime: true // Support `$md()`
+    runtime: true, // Support `$md()`
   },
 
   auth: {
     redirect: {
       login: '/',
-      callback: '/auth'
+      callback: '/auth',
     },
     strategies: {
       aad: {
         scheme: 'oauth2',
         endpoints: {
-          authorization: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize',
-          token: 'https://login.microsoftonline.com/organizations/oauth2/v2.0/token',
+          authorization:
+            'https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize',
+          token:
+            'https://login.microsoftonline.com/organizations/oauth2/v2.0/token',
           userInfo: '',
           logout: false,
         },
@@ -86,8 +84,8 @@ export default {
         },
         refreshToken: {
           property: 'refresh_token',
-          data: "refresh_token",
-          maxAge: 60 * 60 * 24 * 30
+          data: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30,
         },
         responseType: 'code',
         grantType: 'authorization_code',
@@ -96,12 +94,12 @@ export default {
         clientId: 'bab96ac3-5d5d-4e17-9e08-6aa0109c090c',
         codeChallengeMethod: 'S256',
         scope: ['openid', 'profile'],
-        autoLogout: true
-      }
-    }
+        autoLogout: true,
+      },
+    },
   },
   ssr: false,
-  
+
   // auth: {
   //   strategies: {
   //     local: {
@@ -130,22 +128,19 @@ export default {
   //   },
   // },
 
-
-  serverMiddleware: ["~/api/app.js"],
+  serverMiddleware: ['~/api/app.js'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: "/api/",
+    baseURL: '/api/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
-  
+  build: {},
 
   googleFonts: {
     families: {
-      Poppins: true
-    }
-  }
+      Poppins: true,
+    },
+  },
 }
