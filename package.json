@@ -11,6 +11,7 @@
   "dependencies": {
     "@nuxtjs/auth-next": "^5.0.0-1648802546.c9880dc",
     "@nuxtjs/axios": "5.12.1",
+    "@nuxtjs/markdownit": "^2.0.0",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.15.1",
     "dotenv": "^16.0.1",
