@@ -53,8 +53,8 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary btn-lg" v-on:click="run">
-            Run
+          <button type="button" class="btn btn-success btn-lg" v-on:click="test">
+            Test
           </button>
 
           <!-- 
@@ -83,18 +83,48 @@ export default {
     }
   },
   methods : {
-    run() {
+    test() {
+      this.runtesting = true;
 
-
-        var blob = new Blob(["onmessage ="+this.code.toString()], { type: "text/javascript" });
+        var blob = new Blob([`onmessage = (event) => {
+  const { data } = event;
+  const output = drones(parseInt(data));
+  postMessage(output);
+};
+` +this.code.toString()], { type: "text/javascript" });
 
         var worker = new Worker(window.URL.createObjectURL(blob));
-        worker.onmessage = function(e) 
-        { 
-          this.output = e.data;
-        }.bind(this);
+
+        var results = [];
+        var iterationcounter = 0
+        var numberoftrials = Object.keys(this.question.questionTests).length;
         
-        worker.postMessage("start"); 
+        // The view model.
+        var vm = this;
+
+        // on web worker message, add the result to the results array
+        worker.onmessage = function(event,context) {
+          results.push(event.data);
+          iterationcounter++;
+  
+          if (iterationcounter == numberoftrials) {
+            for (let i = 0; i < results.length; i++) {
+              // console.log(results[i])
+
+              console.log(vm.question.questionTests[i])
+            
+            }
+          }
+        }
+
+        const tests = this.question.questionTests
+        
+        for (const [key, value] of Object.entries(tests)) {
+          worker.postMessage(key); 
+        }
+
+
+        
     } 
   },
   props: ['question']
