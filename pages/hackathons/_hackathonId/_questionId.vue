@@ -47,15 +47,30 @@
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
         >   
         
-          <Autosolution :questionTests="question.questionTests"/>
+          <AutosolutionPython :question="question" />
+
+          
         </div>
       </div>
     </div>
+
+    <div class="row align-items-md-stretch mb-4">
+      <div class="col-md-12 mb-4">
+        <div
+          class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
+        >   
+        
+          <AutosolutionJavascript :question="question" />
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-import Autosolution from "../../../components/Autosolution.vue";
+
 export default {
     middleware: "isAuthenticated",
     computed: {
@@ -73,8 +88,7 @@ export default {
                 "/" +
                 context.params.questionId),
         };
-    },
-    components: { Autosolution }
+    }
 }
 </script>
 
