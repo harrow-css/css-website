@@ -7,6 +7,7 @@ require("dotenv").config();
 // routes
 const hackathonRouter = require("./routes/hackathonRouter");
 const usersRouter = require("./routes/usersRouter");
+const contactRouter = require("./routes/contactRouter");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 
 app.use("/hackathons/", hackathonRouter);
 app.use("/users/", usersRouter);
+app.use("/contact/", contactRouter);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -44,8 +46,12 @@ app.get("/", (req, res) => {
 //   ":" +
 //   process.env.DB_PASSWORD +
 //   "@cluster0.qh6jrum.mongodb.net/?retryWrites=true&w=majority";
+const MONGOOSE_URI = "mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@cluster0.9ctff.mongodb.net/?retryWrites=true&w=majority"
 
-const MONGOOSE_URI = "mongodb+srv://"+process.env.MONGOOSE_USERNAME+":"+process.env.MONGOOSE_PASSWORD+"@cluster0.9ctff.mongodb.net/?retryWrites=true&w=majority"
+// const MONGOOSE_URI = "mongodb+srv://"+"dbuser"+":"+"dbpass"+"@cluster0.9ctff.mongodb.net/?retryWrites=true&w=majority"
+
+
+// console.log(process.env.MONGOOSE_USERNAME);
 
 mongoose
   .connect(MONGOOSE_URI, { useNewUrlParser: true })

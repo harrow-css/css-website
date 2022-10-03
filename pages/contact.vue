@@ -62,25 +62,8 @@
         <div
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
         >
-          <h1>Join our mailing list</h1>
-          <p>
-            Keep in the loop with all things about the society through our
-            mailing list
-          </p>
-
-         <form method="post" action="https://listmonk.services.dylankainth.com/subscription/form" class="listmonk-form">
-    <div>
-        <input type="hidden" name="nonce" />
-        <p><input class="form-control" type="email" name="email" required placeholder="E-mail" /></p>
-        <p><input class="form-control" type="text" name="name" placeholder="Name (optional)" /></p>
-      
-        <p class="d-none">
-          <input id="4bba4" type="checkbox" name="l" checked value="4bba4380-94ea-47be-9227-a870d1cefe95" />
-          <label for="4bba4">CSS Society List</label>
-        </p>
-        <button class="btn btn-outline-light mt-auto" type="submit" value="Subscribe">Submit</button>
-    </div>
-</form>
+          <h1>Follow us on social media</h1>
+          <p>We haven't set up any social media accounts yet, but we will soon!</p>
 
         </div>
       </div>
@@ -94,10 +77,26 @@
 
           </p>
 
-          <form action="?" method="POST">
+          <form action="/api/" method="POST">
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John Doe" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Your Email address</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="johndoe@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">What's up?</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="I'd like to get in touch about..." required></textarea>
+            </div>
+            
             <div class="g-recaptcha" data-sitekey="6Lcx2XUhAAAAAOg9DaKNIUnj-dIU2S4pfLpf26TY"></div>
             <br/>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Send" class="btn btn-outline-light disabled ">
+            
           </form>
 
           
@@ -116,7 +115,6 @@ export default {
       script :[ { src:"https://www.google.com/recaptcha/api.js"}]
     }
   },
-  middleware: ['auth']
 }
 </script>
 

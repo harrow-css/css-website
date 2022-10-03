@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'css-website-mixed',
+    title: 'Harrow CSS',
     htmlAttrs: {
       lang: 'en',
     },
@@ -63,6 +63,7 @@ export default {
     redirect: {
       login: '/',
       callback: '/auth',
+      home: '/getinvolved'
     },
     strategies: {
       aad: {

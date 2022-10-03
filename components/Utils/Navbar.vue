@@ -64,8 +64,8 @@ export default {
     return {
       routes: {
         Home: '/',
-        About: '/about',
-        Hackathons: '/hackathons',
+        
+        'Get Involved': '/getinvolved',
         Contact: '/contact',
       },
     }

@@ -8,7 +8,7 @@
           </div>
           <div class="col my-auto">
             <p class="col-md-8 fs-4 text-md-end float-md-end">
-              About joe mama
+              We're a group of Computer Scientists at Harrow School
             </p>
           </div>
         </div>
@@ -18,8 +18,8 @@
     <div class="row align-items-md-stretch">
       <div class="col-md-12 mb-4">
         <div class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column ">
-         <h1>We do some tech stuff.</h1>
-         <p>Such as</p>
+         <h1>Harrow School's a busy place. </h1>
+         <p>We inspire people through the power of technology</p>
         </div>
       </div>
     </div>

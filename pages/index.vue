@@ -22,7 +22,7 @@
         <div class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column ">
           <h1>Get Involved</h1>
           <p>Contact the society leadership and get involved with events and projects.</p>
-          <Nuxt-Link class="btn btn-outline-light mt-auto" to="contact" type="button">Go</Nuxt-Link>
+          <Nuxt-Link class="btn btn-outline-light mt-auto" to="getinvolved" type="button">Go</Nuxt-Link>
         </div>
       </div>
       <div class="col-md-6 mb-4">

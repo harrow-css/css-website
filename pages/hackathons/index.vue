@@ -78,7 +78,8 @@
       </div>
     </div> -->
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <p>Hackathons are nearly ready, but we're still beta testing them. Check back later if you want to participate</p>
+    <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
       <div
         class="col"
         v-for="hackathon in hackathons"
@@ -111,7 +112,7 @@
         </div>
         </Nuxt-Link>
       </div>
-    </div>
+    </div> -->
 
 
 
