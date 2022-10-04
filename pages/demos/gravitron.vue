@@ -50,7 +50,16 @@
   </div>
 </template>
 
+<style >
+canvas#canvas {
+  display: block;
+  margin: 0 auto;
+  border: 5px solid #393939;
+  border-radius: 15px;
+}
+</style>
 <style scoped>
+
 .largevalue {
   font-size: 3rem;
 }
@@ -157,7 +166,7 @@ export default {
 
     const ctx = canvas.getContext('2d')
     const video = document.getElementById('videoElement')
-    const snd = new Audio('a-tone.wav')
+    const snd = new Audio('/a-tone.wav')
 
     const getPose = async () => {
       const poses = await Detector.estimatePoses(video)
@@ -208,6 +217,8 @@ export default {
           }
           i++
         }
+
+        this.loading = false
         // console.log(keypoints)
         drawKeypoints(keypoints)
         try {
