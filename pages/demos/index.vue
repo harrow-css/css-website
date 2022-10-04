@@ -72,7 +72,6 @@ export default {
   async asyncData(context) {
     return {
       userdata: context.app.$auth.$storage.getUniversal('jwt_decoded'),
-      hackathons: await context.app.$axios.$get('/hackathons/getall'),
     }
   }
 }
