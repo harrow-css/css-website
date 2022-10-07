@@ -63,8 +63,8 @@ export default {
     redirect: {
       login: '/',
       callback: '/auth',
-      home: '/getinvolved'
     },
+    rewriteRedirects: true,
     strategies: {
       aad: {
         scheme: 'oauth2',
