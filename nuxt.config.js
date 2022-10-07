@@ -61,7 +61,6 @@ export default {
 
   auth: {
     redirect: {
-      login: '/',
       callback: '/auth',
     },
     rewriteRedirects: true,
