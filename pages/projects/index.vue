@@ -62,6 +62,28 @@
         </a>
       </div>
 
+      <div class="col">
+        <a
+          style="text-decoration: none; color: inherit"
+          href="https://dylankainth.com/project/1dbc680c-77cf-401e-b56c-88fbbdd260ce"
+        >
+          <div
+            class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
+            v-bind:style="
+              'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' +
+              require(`~/assets/images/communityday.png`) +
+              '); '
+            "
+          >
+            <div
+              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
+            >
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Community Day</h2>
+            </div>
+          </div>
+        </a>
+      </div>
+
     </div>
 
   </div>
