@@ -7,7 +7,7 @@ export default function({ store, redirect }) {
       const domain = email.split('@').pop()
         
       console.log(email)
-      if (email=='chun-pei_chan@oxcoll.com' || email=="19KainthD@harrowschool.org.uk") {
+      if (email=='chun-pei_chan@oxcoll.com' || email=="19KainthD@harrowschool.org.uk" || email=="20LamZ@harrowschool.org.uk") {
 
       } else {
         return redirect("/auth/errors/notbetatester");
