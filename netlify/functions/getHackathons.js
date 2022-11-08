@@ -1,6 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 
-const MONGODB_URI = 'mongodb+srv://dbuser:dbpass@cluster0.9ctff.mongodb.net/?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = 'test';
 
 let cachedDb = null;

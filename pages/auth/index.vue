@@ -15,7 +15,7 @@ export default {
     this.$auth.$storage.setUniversal('jwt_decoded', decodedBearer)
 
 var userdata  = this.$auth.$storage.getUniversal('jwt_decoded')
-    this.$axios.post('/users/postnewuser', { data: userdata }  )
+    this.$axios.post('/postNewUser', { data: userdata }  )
     .then(function (response) {
         console.log(response);
     })
