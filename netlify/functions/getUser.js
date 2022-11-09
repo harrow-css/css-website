@@ -19,16 +19,16 @@ const connectToDatabase = async (uri) => {
   return cachedDb;
 };
 
-const queryDatabase = async (db) => {
+const queryDatabase = async (db,id ) => {
   // query the database for hackathons
-  const hackathons = await db.collection("hackathons").find({}, 'hackathonName hackathonStartDate hackathonEndDate hackathonImage hackathonHost').sort([['hackathonStartDate', -1]]).toArray();
+  const user = await db.collection("users").find({_id: id}).toArray();
 
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(hackathons),
+    body: JSON.stringify(user),
   };
 };
 
@@ -38,5 +38,5 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   const db = await connectToDatabase(MONGODB_URI);
-  return queryDatabase(db);
+  return queryDatabase(db, event.queryStringParameters.id);
 };

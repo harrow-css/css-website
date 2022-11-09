@@ -20,15 +20,15 @@ const connectToDatabase = async (uri) => {
 };
 
 const queryDatabase = async (db) => {
-  // query the database for hackathons
-  const hackathons = await db.collection("hackathons").find({}, 'hackathonName hackathonStartDate hackathonEndDate hackathonImage hackathonHost').sort([['hackathonStartDate', -1]]).toArray();
+  // query the database for lectures
+  const lectures = await db.collection("lectures").find({}, {"name":1, "_id":1, "image":1, "content":0, "date":1, "location":0, "speakers":0 }).sort([['timestamp', -1]]).toArray();
 
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(hackathons),
+    body: JSON.stringify(lectures),
   };
 };
 
