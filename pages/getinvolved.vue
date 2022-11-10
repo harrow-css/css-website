@@ -135,7 +135,9 @@
             <div
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
             >
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">6th Form Study</h2>
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                6th Form Study
+              </h2>
             </div>
           </div>
         </Nuxt-Link>
@@ -162,7 +164,22 @@
           </div>
         </Nuxt-Link>
       </div>
-
+    </div>
+    <div class="row align-items-md-stretch mb-4 mt-4">
+      <div class="col-md-12 mb-4">
+        <div
+          class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
+        >
+          <div class="row align-items-start">
+            <div class="col-lg-12">
+              <h1>
+                You've got
+                <i>{{ Math.floor(userpoints / 8) }} byte <span v-if="Math.floor(userpoints / 8)>1">s</span> <span v-if="userpoints%8!=0">and {{ userpoints%8 }} bit<span v-if="userpoints%8!=1">s</span></span> </i>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -189,7 +206,12 @@
 export default {
   middleware: 'isAuthenticated',
   async asyncData(context) {
+    const userpoints = await context.$axios.$get(
+      'getUser?id=' + context.app.$auth.$storage.getUniversal('jwt_decoded').oid
+    )
+
     return {
+      userpoints: userpoints[0].points,
       userdata: context.app.$auth.$storage.getUniversal('jwt_decoded'),
     }
   },
