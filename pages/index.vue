@@ -34,6 +34,8 @@
       </div>
       
     </div>
+
+    <p>This site is running master branch in heroku</p>
   </div>
 </template>
 
