@@ -84,7 +84,6 @@ export default {
 <style scoped>
 .navbar {
   background-color: #393939;
-  position: relative;
 }
 
 a.navbar-brand {

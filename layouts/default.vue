@@ -16,6 +16,11 @@ body {
 
 }
 
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.5s;
