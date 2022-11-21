@@ -15,9 +15,10 @@
       </div>
     </div>
 
-    <h1 class="mb-3">Upcoming</h1>
+
+    <h1 class="mb-3" v-if="(lectures.filter(lecture => (new Date(lecture.date)) > (Date.now()))).length > 0">Upcoming</h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col" v-for="lecture in lectures" v-bind:key="lecture._id">
+      <div class="col" v-for="lecture in lectures.filter(lecture => (new Date(lecture.date)) > (Date.now()))" v-bind:key="lecture._id">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
           :to="'/lectures/'+lecture._id"
@@ -28,8 +29,33 @@
           >
             <div
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
-            >
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{lecture.name}}</h2>
+            > 
+              
+              <span class="pt-5 mt-5 mb-4"><p>{{ (new Date(lecture.date)).toLocaleDateString() }}</p><h1 class="display-6 lh-1 fw-bold">{{lecture.name}}</h1></span>
+              
+            </div>
+          </div>
+        </Nuxt-Link>
+      </div>
+    </div>
+
+    <h1 class="my-3">Completed Lectures</h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col" v-for="lecture in lectures.filter(lecture => (new Date(lecture.date)) < (Date.now()))" v-bind:key="lecture._id">
+        <Nuxt-Link
+          style="text-decoration: none; color: inherit"
+          :to="'/lectures/'+lecture._id"
+        >
+          <div
+            class="card card-cover h-100 overflow-hidden rounded-4 shadow"
+            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+require(`~/assets/images/lectures/${lecture.image}`)+');' "
+          >
+            <div
+              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
+            > 
+              
+              <span class="pt-5 mt-5 mb-4"><p>{{ (new Date(lecture.date)).toLocaleDateString() }}</p><h1 class="display-6 lh-1 fw-bold">{{lecture.name}}</h1></span>
+              
             </div>
           </div>
         </Nuxt-Link>
