@@ -69,6 +69,7 @@ export default {
     redirect: {
       callback: '/auth',
     },
+    rewriteRedirects : true,
     strategies: {
       aad: {
         scheme: 'oauth2',

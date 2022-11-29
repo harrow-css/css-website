@@ -1,5 +1,11 @@
-export default function({ store, redirect }) {
+export default function({ store, redirect , route}) {
   if (!store.state.auth.loggedIn) {
+
+    /* log the current page route to the console */
+    console.log('redirecting to login page from: ' + route.path)
+
+    store.$auth.$storage.setUniversal('redirect', route.path);
+
     return redirect("/auth/logon");
     
   } else {

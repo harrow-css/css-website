@@ -23,6 +23,11 @@ var userdata  = this.$auth.$storage.getUniversal('jwt_decoded')
         console.log(error);
     });
 
+    console.log(this.$auth.$storage.getUniversal('redirect'))
+    const path = this.$auth.$storage.getUniversal('redirect') || '/';
+    this.$auth.$storage.setUniversal('redirect', null);
+    this.$router.push(path);
+
   }
 }
 </script>
