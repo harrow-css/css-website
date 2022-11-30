@@ -472,10 +472,6 @@ ${
             statusCode: 201,
           }
         }
-      }).then((result) => {
-        return {
-          statusCode: 201,
-        }
       })
 
       return {
