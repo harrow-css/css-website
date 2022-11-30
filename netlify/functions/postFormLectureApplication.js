@@ -382,8 +382,6 @@ ${
 <p>Your comments were</p>
 <p>${
           data['lecturemeta']['comments']
-            ? data['lecturemeta']['comments']
-            : 'no comments.. :('
         }</p>
 
 <p>You've been allocated request ID <b>${result.insertedId}</b></p>

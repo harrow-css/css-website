@@ -399,6 +399,7 @@ export default {
             jointWithSociety: this.SocietyLectureBool,
             slidesAreadyDone: this.SlidesAlreadyDone,
             overclocked: this.Overclocked,
+            comments: this.comments,
           },
           people: {
             mainspeaker: {
@@ -414,7 +415,6 @@ export default {
             extraSpeaker: this.ExtraSpeaker,
             speakerNumbers: this.SpeakerNumber,
           },
-          comments: this.comments,
           EmailMeACopy: this.EmailMeACopy,
         })
         .then(() => {
