@@ -1,13 +1,13 @@
-const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongodb').MongoClient
 // require dotenv
 require('dotenv').config()
 
-const MONGODB_URI = process.env.MONGODB_URI;
-const DB_NAME = 'test';
+const MONGODB_URI = process.env.MONGODB_URI
+const DB_NAME = 'test'
 
-var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer')
 
-let cachedDb = null;
+let cachedDb = null
 
 const connectToDatabase = async (uri) => {
   // we can cache the access to our database to speed things up a bit
@@ -23,30 +23,44 @@ const connectToDatabase = async (uri) => {
   return cachedDb
 }
 
-const postEmail = async (db,body) => {
+const postDatabase = async (db, data) => {
+  data['type'] = 'lectureApplication'
+  data['timestamp'] = new Date()
 
-    // parse body to get id and points
-    const name = body.form.name
-    const email = body.form.email
-    const message = body.form.message
+  emailme = data['EmailMeACopy']
+  data['EmailMeACopy'] = null
 
+  lectureid = ''
 
-    var transporter = nodemailer.createTransport({
-      service: 'hotmail',
-      auth: {
-        user: process.env.EMAILUSERNAME,
-        pass: process.env.EMAILPASSWORD,
-      },
-    })
-      
-    var mailOptions = {
-    from: 'The Harrow School CSS Team <harrowschoolcss@outlook.com> ',
-    to: '19kainthd@Harrowschool.org.uk',
-    subject: 'General Contact Form Submitted',
-    replyTo: '19kainthd@Harrowschool.org.uk',
-    priority :'low',
-    name: 'The Harrow School CSS Team',
-    html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  // post the data to the database under the collection 'forms' with type: 'projectApplication' and with date
+  db.collection('forms').insertOne(data, (err, result) => {
+    if (err) {
+      console.log(err)
+    }
+
+    if (!emailme) {
+      return {
+        statusCode: 200,
+      }
+    }
+
+    if (emailme) {
+      var transporter = nodemailer.createTransport({
+        service: 'hotmail',
+        auth: {
+          user: process.env.EMAILUSERNAME,
+          pass: process.env.EMAILPASSWORD,
+        },
+      })
+
+      var mailOptions = {
+        from: 'The Harrow School CSS Team <harrowschoolcss@outlook.com> ',
+        to: data['people']['mainspeaker']['email'],
+        subject: 'You have submitted a form',
+        replyTo: '19kainthd@Harrowschool.org.uk',
+        priority: 'low',
+        name: 'The Harrow School CSS Team',
+        html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html>
     
     <head>
@@ -249,7 +263,7 @@ const postEmail = async (db,body) => {
                                               </div>
                                               <h5 class="text-teal-700"
                                                 style="color: #fffbfe; padding-top: 0; padding-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 20px; line-height: 24px; margin: 0;"
-                                                align="left">Contact Form Submission</h5>
+                                                align="left">Form Submission Confirmation</h5>
                                               <table class="s-5 w-full" role="presentation" border="0" cellpadding="0"
                                                 cellspacing="0" style="width: 100%;" width="100%">
                                                 <tbody>
@@ -298,9 +312,87 @@ const postEmail = async (db,body) => {
                                               <p class="text-gray-700"
                                                 style="line-height: 24px; font-size: 16px; color: #fffbfe; width: 100%; margin: 0;"
                                                 align="left">
-                                                ${ name } has submitted a contact form on the website. 
-                                                <br> Their details are: ${ email } <br>
-                                                ${ message }
+
+                                                <p>Thanks for filling in our lecture application form, your answers are below: </p>
+                                                <table style="border-collapse: collapse; width: 100%; height: 136px;" border="1">
+<tbody>
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;"><strong>Question</strong></span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;"><strong>Response</strong></span></td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Title</span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
+          data['lecturedetails']['title']
+        }</span></td>
+</tr>
+
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Strapline</span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
+          data['lecturedetails']['strapline']
+        }</span></td>
+</tr>
+
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Description</span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
+          data['lecturedetails']['description']
+        }</span></td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+
+<table style="border-collapse: collapse; width: 100%; height: 136px;" border="1">
+<tbody>
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;"><strong>Question</strong></span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;"><strong>Response</strong></span></td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Joint with another society?</span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
+          data['lecturemeta']['jointWithSociety'] ? 'Yes' : 'No'
+        }</span></td>
+</tr>
+
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Overclocked</span></td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
+          data['lecturemeta']['overclocked'] ? 'Yes' : 'No'
+        }</span></td>
+</tr>
+
+<tr style="height: 17px;">
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;"></span>Slides already done?</td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
+  data['lecturemeta']['slidesAreadyDone'] ? 'Yes' : 'No'
+        }</span></td>
+</tr>
+
+</tbody>
+</table>
+
+${
+  data['lecturemeta']['extraSpeaker']
+    ? `<p>You've registered ${data['lecturemeta']['extraSpeaker']} as an extra speakers</p>`
+    : ''
+}
+
+<p>Your comments were</p>
+<p>${
+          data['lecturemeta']['comments']
+            ? data['lecturemeta']['comments']
+            : 'no comments.. :('
+        }</p>
+
+<p>You've been allocated request ID <b>${result.insertedId}</b></p>
+<p>Thanks for your time, we'll be in touch soon!</p>
+
+
                                               </p>
     
                                               <table class="s-3 w-full" role="presentation" border="0" cellpadding="0"
@@ -366,20 +458,31 @@ const postEmail = async (db,body) => {
       </table>
     </body>
     
-    </html>`
-    };
-    
-    transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
-    });
+    </html>`,
+      }
+      
 
-  return {
-    statusCode: 201,
-  }
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          return {
+            statusCode: 500,
+          }
+        } else {
+          return {
+            statusCode: 201,
+          }
+        }
+      }).then((result) => {
+        return {
+          statusCode: 201,
+        }
+      })
+
+      return {
+        statusCode: 201,
+      }
+    }
+  })
 }
 
 module.exports.handler = async (event, context) => {
@@ -389,10 +492,8 @@ module.exports.handler = async (event, context) => {
 
   const db = await connectToDatabase(MONGODB_URI)
 
-  
+  // get query string parameter called 'data'
+  const data = JSON.parse(event.body)
 
-  // get body of request
-  const body = JSON.parse(event.body)
-
-  return postEmail(db,body)
+  return postDatabase(db, data)
 }

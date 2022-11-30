@@ -41,12 +41,12 @@ const postDatabaseandEmail = async (db,body) => {
     console.log(user)
 
     var transporter = nodemailer.createTransport({
-        service: 'hotmail',
-        auth: {
-          user: 'harrowschoolcss@outlook.com',
-          pass: 'cookesuite1572@'
-        }
-      });
+      service: 'hotmail',
+      auth: {
+        user: process.env.EMAILUSERNAME,
+        pass: process.env.EMAILPASSWORD,
+      },
+    })
       
     var mailOptions = {
     from: 'The Harrow School CSS Team <harrowschoolcss@outlook.com> ',

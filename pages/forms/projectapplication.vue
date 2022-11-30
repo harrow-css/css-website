@@ -248,7 +248,7 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="textAreaComments"></textarea>
 
 
-            <button class="my-3 btn btn-primary" style="width:10vw">Submit</button>
+            <button class="my-3 btn btn-primary" style="width:10vw" @click="senddata">Submit</button>
 
         </div>
       </div>
@@ -360,6 +360,27 @@ export default {
         .split(')')[0]
     )
   },
-  middleware: 'isAuthenticated'
+  middleware: 'isAuthenticated',
+  methods: {
+    senddata() {
+      this.$axios.post(
+        'postFormProjectApplication',
+        {
+          name: this.$auth.$storage.getUniversal('jwt_decoded').name,
+          email: this.$auth.$storage.getUniversal('jwt_decoded').email,
+          year: this.RadioYearGroup,
+          house: this.houselist[this.RadioHouse],
+          github: this.switchGithub,
+          comments: this.textAreaComments,
+          commitments: this.commitmentsPicked,
+          subjects: this.subjectsPicked,
+          admaths: this.SwitchAdmaths,
+          skills: this.SliderSkills,
+          aspirations: this.SliderAspirations,
+          mathdiv: this.InputMathDiv,
+        }
+      )
+    }
+  }
 }
 </script>

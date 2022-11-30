@@ -1,5 +1,7 @@
 [context.dev.environment]
   MONGODB_URI = "mongodb+srv://dbuser:dbpass@cluster0.9ctff.mongodb.net/?retryWrites=true&w=majority"
+  EMAILUSERNAME = "harrowschoolcss@outlook.com"
+  EMAILPASSWORD = "cookesuite1572@"
 
 # Use [dev] to set configuration overrides for local 
 # development environments run using Netlify Dev - except 
