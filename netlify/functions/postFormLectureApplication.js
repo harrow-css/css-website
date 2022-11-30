@@ -464,9 +464,12 @@ ${
         }
       })
 
-      return {
-        statusCode: 200,
-      }
+      setTimeout(() => {
+        return {
+          statusCode: 200,
+        }
+      }, 600);
+      
 
     
     }
