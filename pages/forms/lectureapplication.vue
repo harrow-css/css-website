@@ -194,7 +194,7 @@
 
           <h3 class="mt-2">Is your lecture overclocked?</h3>
           <p>
-            We will have told you already if it is via email, please confirm
+            We will have already told you via email if it is, please confirm
             below.
           </p>
           <div>

@@ -33,10 +33,7 @@ const postDatabase = async (db, data) => {
   lectureid = ''
 
   // post the data to the database under the collection 'forms' with type: 'projectApplication' and with date
-  db.collection('forms').insertOne(data, (err, result) => {
-    if (err) {
-      console.log(err)
-    }
+  result = await db.collection('forms').insertOne(data)
 
     if (!emailme) {
       return {
@@ -464,21 +461,19 @@ ${
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          return {
-            statusCode: 500,
-          }
+          
         } else {
-          return {
-            statusCode: 201,
-          }
+          
         }
       })
 
       return {
-        statusCode: 201,
+        statusCode: 200,
       }
+
+    
     }
-  })
+
 }
 
 module.exports.handler = async (event, context) => {
