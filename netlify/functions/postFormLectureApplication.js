@@ -28,7 +28,6 @@ const postDatabase = async (db, data) => {
   data['timestamp'] = new Date()
 
   emailme = data['EmailMeACopy']
-  data['EmailMeACopy'] = null
 
   lectureid = ''
 
