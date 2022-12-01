@@ -34,18 +34,12 @@ const postDatabase = async (db, data) => {
   // post the data to the database under the collection 'forms' with type: 'projectApplication' and with date
   result = await db.collection('forms').insertOne(data)
 
-    if (!emailme) {
-      return {
-        statusCode: 200,
-      }
-    }
-
     if (emailme) {
       var transporter = nodemailer.createTransport({
         service: 'hotmail',
         auth: {
-          user: process.env.EMAILUSERNAME,
-          pass: process.env.EMAILPASSWORD,
+          user: toString(process.env.EMAILUSERNAME),
+          pass: toString(process.env.EMAILPASSWORD),
         },
       })
 
@@ -469,6 +463,12 @@ ${
       }
 
     
+    }
+
+    if (!emailme) {
+      return {
+        statusCode: 200,
+      }
     }
 
 }
