@@ -452,7 +452,9 @@ ${
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          
+          return {
+            statusCode: 500,
+          }
         } else {
           
         }
