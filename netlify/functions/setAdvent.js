@@ -49,7 +49,7 @@ const handler = async function(event, context) {
         timestamp: new Date(),
         data: response.data
     })
-    
+
 
     console.log(response)
     return {
@@ -57,4 +57,4 @@ const handler = async function(event, context) {
     };
 };
 
-exports.handler = schedule("*/15 * * * *", handler);
+exports.handler = schedule("*/4 * * * *", handler);
