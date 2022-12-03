@@ -2,9 +2,8 @@
 
 const { schedule } = require("@netlify/functions");
 
-// require node-fetch
-import fetch from 'node-fetch';
-
+// import axios
+const axios = require("axios");
 
 const MongoClient = require("mongodb").MongoClient;
 // require dotenv
@@ -32,13 +31,13 @@ const connectToDatabase = async (uri) => {
 const handler = async function(event, context) {
     console.log("Received event:", event);
 
-    // write a get request to an api with cookie
-    const response = await fetch("https://adventofcode.com/2022/leaderboard/private/view/1521149.json", {
-        method: "GET",
+    // write this get request in axios
+    const response = await axios.get("https://adventofcode.com/2022/leaderboard/private/view/1521149.json", {
         headers: {
             "Cookie": "session=53616c7465645f5f92309e24572bf8476ab67c247c784eb66c2029b1058d2318a1f29677efa7049c7ed32d772157c297add634e49c501c5243a187c9c9cb4550"
         }
     });
+
 
     // set that to the advent collection in the database
     const db = await connectToDatabase(MONGODB_URI)
