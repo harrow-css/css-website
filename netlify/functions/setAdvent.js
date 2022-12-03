@@ -42,10 +42,10 @@ const handler = async function(event, context) {
     const db = await connectToDatabase(MONGODB_URI)
 
     // clear the collection
-    db.collection("advent").deleteMany({})
+    deletestatus = await db.collection("advent").deleteMany({})
 
     // insert the new data with a timestamp
-    db.collection("advent").insertOne({
+    addstatus = await db.collection("advent").insertOne({
         timestamp: new Date(),
         data: response.data
     })
