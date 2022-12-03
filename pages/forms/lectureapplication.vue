@@ -192,7 +192,7 @@
             </div>
           </div>
 
-          <h3 class="mt-2">Are you usually free on a Friday at 5pm?</h3>
+          <h3 class="mt-2">Are you usually free on a Thursday at 5pm?</h3>
           <p>
             This is just to confirm that you don't have a clash with our regular society slot 
           </p>
