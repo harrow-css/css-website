@@ -3,7 +3,7 @@
 const { schedule } = require("@netlify/functions");
 
 // require node-fetch
-const fetch = require("node-fetch");
+import fetch from 'node-fetch';
 
 
 const MongoClient = require("mongodb").MongoClient;
