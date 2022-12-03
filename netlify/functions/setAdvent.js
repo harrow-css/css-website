@@ -38,20 +38,18 @@ const handler = async function(event, context) {
         }
     });
 
-
     // set that to the advent collection in the database
     const db = await connectToDatabase(MONGODB_URI)
 
     // clear the collection
     db.collection("advent").deleteMany({})
 
-    // insert the new data
-    db.collection("advent").insertOne(
-    {
-        data: response,
-    },
-    (err, result) => {}
-    )
+    // insert the new data with a timestamp
+    db.collection("advent").insertOne({
+        timestamp: new Date(),
+        data: response.data
+    })
+    
 
     console.log(response)
     return {
