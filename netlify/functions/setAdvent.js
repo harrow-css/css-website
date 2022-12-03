@@ -56,4 +56,4 @@ const handler = async function(event, context) {
     };
 };
 
-exports.handler = schedule("0 0/15 * 1/1 * ? *", handler);
+exports.handler = schedule("@hourly", handler);
