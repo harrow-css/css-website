@@ -192,10 +192,9 @@
             </div>
           </div>
 
-          <h3 class="mt-2">Is your lecture overclocked?</h3>
+          <h3 class="mt-2">Are you usually free on a Friday at 5pm?</h3>
           <p>
-            We will have already told you via email if it is, please confirm
-            below.
+            This is just to confirm that you don't have a clash with our regular society slot 
           </p>
           <div>
             <div class="form-check form-switch">
@@ -204,11 +203,11 @@
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckDefault"
-                v-model="Overclocked"
+                v-model="ThursdayOK"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
-                ><span v-if="!Overclocked">No</span
-                ><span v-if="Overclocked">Yes</span></label
+                ><span v-if="!ThursdayOK">No</span
+                ><span v-if="ThursdayOK">Yes</span></label
               >
             </div>
           </div>
@@ -242,7 +241,7 @@
             The description can be a little longer. Give us a short introduction
             to your topic. This text won't be displayed on posters, but will
             help us pick images for posters and will appear on the society
-            website
+            website. It'll also help us form Speech Room Announcements.
           </p>
           <textarea
             class="form-control"
@@ -251,7 +250,7 @@
             placeholder="We discuss the way the computer developed, starting with the Antikythera mechanism and telling it's story all the way to quantum computers, these changes are visible in architecture and component developments..."
           ></textarea>
 
-          <h3 class="mt-2">Have you already made the presentation slides?</h3>
+          <h3 class="mt-2">Have you already done some research on your chosen topic?</h3>
           <div>
             <div class="form-check form-switch">
               <input
@@ -343,7 +342,7 @@ export default {
       comments: '',
       LectureStrapline: '',
       SlidesAlreadyDone: false,
-      Overclocked: false,
+      ThursdayOK: true,
       SocietyLectureBool: false,
       SpeakerNumber: 1,
       ExtraSpeaker: '',
