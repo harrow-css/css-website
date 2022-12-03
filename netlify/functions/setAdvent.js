@@ -2,6 +2,10 @@
 
 const { schedule } = require("@netlify/functions");
 
+// require node-fetch
+const fetch = require("node-fetch");
+
+
 const MongoClient = require("mongodb").MongoClient;
 // require dotenv
 require('dotenv').config()
