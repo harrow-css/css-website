@@ -320,7 +320,7 @@ module.exports.handler = async (event, context) => {
                                               style="line-height: 24px; font-size: 16px; color: #fffbfe; width: 100%; margin: 0;"
                                               align="left">
 
-                                              <p>Thanks for filling in our lecture application form, your answers are below: </p>
+                                              <p style="color: #ffffff;">Thanks for filling in our lecture application form, your answers are below: </p>
                                               <table style="border-collapse: collapse; width: 100%; height: 136px;" border="1">
 <tbody>
 <tr style="height: 17px;">
@@ -367,14 +367,7 @@ module.exports.handler = async (event, context) => {
 </tr>
 
 <tr style="height: 17px;">
-<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Overclocked</span></td>
-<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
-        data['lecturemeta']['overclocked'] ? 'Yes' : 'No'
-      }</span></td>
-</tr>
-
-<tr style="height: 17px;">
-<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;"></span>Slides already done?</td>
+<td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">Slides already done?</span></td>
 <td style="width: 33.0347%; height: 17px;"><span style="color: #ffffff;">${
 data['lecturemeta']['slidesAreadyDone'] ? 'Yes' : 'No'
       }</span></td>
@@ -389,13 +382,13 @@ data['lecturemeta']['extraSpeaker']
   : ''
 }
 
-<p>Your comments were</p>
-<p>${
+<p style="color: #ffffff;">Your comments were</p>
+<p style="color: #ffffff;">${
         data['lecturemeta']['comments']
       }</p>
 
-<p>You've been allocated request ID <b>${result.insertedId}</b></p>
-<p>Thanks for your time, we'll be in touch soon!</p>
+<p style="color: #ffffff;">You've been allocated request ID <b>${result.insertedId}</b></p>
+<p style="color: #ffffff;">Thanks for your time, we'll be in touch soon!</p>
 
 
                                             </p>
