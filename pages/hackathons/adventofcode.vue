@@ -71,6 +71,13 @@
       </div>
     </div>
 
+    <div class="card mt-2">
+      <div class="card-body">
+        <h3>How this leaderboard works</h3>
+        <img src="~assets/images/howitworks.jpg"> 
+      </div>
+    </div>
+
     
     
   </div>
