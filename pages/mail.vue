@@ -59,7 +59,7 @@
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
         >   
 
-            <h1>{{new Date(email.timestamp).getDate()}}/{{new Date(email.timestamp).getMonth()}}/{{new Date(email.timestamp).getFullYear()}}</h1>
+            <h1>{{new Date(email.timestamp).getDate()}}/{{new Date(email.timestamp).getMonth() +1}}/{{new Date(email.timestamp).getFullYear()}}</h1>
             <span v-html="email.body"></span>
 
         </div>
