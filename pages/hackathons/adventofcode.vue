@@ -36,13 +36,14 @@
                 "
                 >★</span
               >
-              <span
+              <span 
                 v-if="
                   Object.keys(
                     member.completion_day_level[MonthNumber.toString()]
                   ).length == 2
                 "
-                >⭐</span
+                >⭐
+                </span
               >
             </span>
           </th>
