@@ -9,11 +9,13 @@
         >   
 
             <h1 class="fs-1 fw-bold">{{ lecture.name }} </h1>
+
+            <img class="rounded-3 mx-5 my-3" style="height:500px; object-fit: cover;" :src="createLectureImageUrl(lecture.image)">
+
             <h3>{{ lecture.strapline }}</h3>
             <h5>From {{lecture.speakers.join(", ")}}</h5>
             <h5>In {{ lecture.Location }} on {{ ( new Date(lecture.date)).toLocaleDateString()}} at {{ ( new Date(lecture.date)).toLocaleTimeString()}}</h5>
 
-            <img class="rounded-3" :src="require(`~/assets/images/lectures/${lecture.image}`)">
 
             <span class="mt-3" v-html="lecture.content"></span>
             
@@ -44,6 +46,17 @@ export default {
         lecture: lecture[0]
         }
     },
+    methods: {
+      createLectureImageUrl(inputstring) {
+        /* if the inputstring starts with https, then it is a url, otherwise it is a local file */
+        if (inputstring.startsWith('https')) {
+          return inputstring
+        } else {
+          return require(`~/assets/images/lectures/${inputstring}`)
+        }
+
+      }
+    }
 }
 </script>
 
