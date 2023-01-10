@@ -20,7 +20,7 @@
         <div
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
         >
-          <h4>Spring 2023</h4>
+          <h4>Summer 2023</h4>
           <h1>
             <i
               >You're submiting this form as
