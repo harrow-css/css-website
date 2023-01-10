@@ -18,7 +18,7 @@
 
     <h1 class="mb-3" v-if="(lectures.filter(lecture => (new Date(lecture.date)) > (Date.now()))).length > 0">Upcoming</h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col" v-for="lecture in lectures.filter(lecture => (new Date(lecture.date)) > (Date.now()))" v-bind:key="lecture._id">
+      <div class="col" v-for="lecture in (lectures.filter(lecture => (new Date(lecture.date)) > (Date.now()))).sort((a, b) => new Date(a.date) - new Date(b.date))" v-bind:key="lecture._id">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
           :to="'/lectures/'+lecture._id"
@@ -41,7 +41,7 @@
 
     <h1 class="my-3">Completed Lectures</h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col" v-for="lecture in lectures.filter(lecture => (new Date(lecture.date)) < (Date.now()))" v-bind:key="lecture._id">
+      <div class="col" v-for="lecture in (lectures.filter(lecture => (new Date(lecture.date)) < (Date.now()))).sort((a, b) => new Date(b.date) - new Date(a.date))" v-bind:key="lecture._id">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
           :to="'/lectures/'+lecture._id"
