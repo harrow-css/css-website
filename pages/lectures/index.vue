@@ -25,7 +25,7 @@
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow"
-            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+require(`~/assets/images/lectures/${lecture.image}`)+');' "
+            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+createLectureImageUrl(lecture.image)+');' "
           >
             <div
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
@@ -48,7 +48,7 @@
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow"
-            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+require(`~/assets/images/lectures/${lecture.image}`)+');' "
+            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+createLectureImageUrl(lecture.image)+');' "
           >
             <div
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
@@ -88,6 +88,17 @@ export default {
   async asyncData({ $axios }) {
     const lectures = await $axios.$get('getLectures')
     return { lectures }
+  },
+  methods: {
+    createLectureImageUrl(inputstring) {
+      /* if the inputstring starts with https, then it is a url, otherwise it is a local file */
+      if (inputstring.startsWith('https')) {
+        return inputstring
+      } else {
+        return require(`~/assets/images/lectures/${inputstring}`)
+      }
+
+    }
   }
 }
 </script>
