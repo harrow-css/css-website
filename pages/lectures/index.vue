@@ -25,7 +25,7 @@
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow"
-            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+require(`~/assets/images/${lecture.image}`)+');' "
+            v-bind:style=" 'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('+require(`~/assets/images/lectures/${lecture.image}`)+');' "
           >
             <div
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
