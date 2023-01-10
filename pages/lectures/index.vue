@@ -84,6 +84,7 @@
 
 <script>
 export default {
+  middleware: 'isAuthenticated',
   async asyncData({ $axios }) {
     const lectures = await $axios.$get('getLectures')
     return { lectures }
