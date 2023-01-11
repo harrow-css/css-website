@@ -1,10 +1,38 @@
+// import axios from 'axios'
+// let dynamicRoutes = async () => {
+//   const axios = require('axios');
+
+//   return axios.get('http://css.harrowschool.io/.netlify/functions/getLectures').then(res => {
+//    console.log(res)
+//    return res.data.map(lecture => `/lectures/${lecture._id}`)
+//  })
+// }
+
+let dynamicRoutes = async () => {
+  const MongoClient = require("mongodb").MongoClient;
+
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const DB_NAME = 'test';
+
+  const client = await MongoClient.connect(MONGODB_URI, {
+    useUnifiedTopology: true,
+  });
+
+  const db = client.db(DB_NAME);
+
+  const lectures = await db.collection("lectures").find({}, {"name":1, "_id":1, "image":1, "content":0, "date":1, "location":0, "speakers":0 }).sort([['timestamp', -1]]).toArray();
+
+  console.log(lectures)
+
+  return lectures.map(lecture => `/lectures/${lecture._id}`)
+}
+
 export default {
   server: {
     port: 3010 // default: 3000
   },
 
   target: 'static',
-  mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Harrow CSS',
@@ -48,6 +76,10 @@ export default {
       },
       { src: 'https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js' },
     ],
+  },
+
+  generate: {
+    routes: dynamicRoutes
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
