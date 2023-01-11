@@ -22,7 +22,7 @@ let dynamicRoutes = async () => {
 
   const lectures = await db.collection("lectures").find({}, {"name":1, "_id":1, "image":1, "content":0, "date":1, "location":0, "speakers":0 }).sort([['timestamp', -1]]).toArray();
 
-  console.log(lectures)
+  client.close();
 
   return lectures.map(lecture => `/lectures/${lecture._id}`)
 }
