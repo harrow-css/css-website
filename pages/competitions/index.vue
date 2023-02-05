@@ -4,11 +4,11 @@
       <div class="container-fluid py-5">
         <div class="row align-items-start">
           <div class="col my-auto">
-            <h1 class="display-2 fw-bold">Hackathons</h1>
+            <h1 class="display-2 fw-bold">Competitions</h1>
           </div>
           <div class="col my-auto">
             <p class="col-md-8 fs-4 text-md-end float-md-end">
-              Participate in Society Hackathons
+              Participate in Society Hackathons and Competitions
             </p>
           </div>
         </div>
@@ -27,7 +27,7 @@
                 <i>{{ userdata.given_name }} {{ userdata.family_name }}</i>
               </h1>
               <p>
-                Any hackathon problems you solve will be linked to your account.
+                Any hackathon problems you solve or competitions entries you submit will be linked to your account.
               </p>
             </div>
             <div class="col-lg-1">
@@ -42,6 +42,8 @@
         </div>
       </div>
     </div>
+
+    
 
     <!-- <div class="row mb-2">
       <div class="col-md-6" v-for="hackathon in hackathons" v-bind:key="hackathon._id">
@@ -85,7 +87,7 @@
         v-for="hackathon in hackathons"
         v-bind:key="hackathon._id"
       >
-      <Nuxt-Link :to="'/hackathons/'+hackathon._id" style="text-decoration: none;">
+      <Nuxt-Link :to="'/competitions/hackathons/'+hackathon._id" style="text-decoration: none;">
         <div
           class="card secondarystyledcard lg-3 rounded-3 shadow border-0"
           style="max-width: 540px"

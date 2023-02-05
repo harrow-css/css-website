@@ -10,7 +10,7 @@
 
             <h1 class="fs-1 fw-bold">{{ lecture.name }} </h1>
 
-            <img class="rounded-3 mx-5 my-3" style="height:500px; object-fit: cover;" :src="createLectureImageUrl(lecture.image)">
+            <img class="rounded-3 mx-md-5 mx-sm-1 my-3" style="height:500px; object-fit: cover;" :src="createLectureImageUrl(lecture.image)">
 
             <h3>{{ lecture.strapline }}</h3>
             <h5>From {{lecture.speakers.join(", ")}}</h5>

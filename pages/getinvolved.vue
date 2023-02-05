@@ -122,7 +122,7 @@
       <div class="col">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
-          :to="'/sixthformstudy/'"
+          :to="'/hpc/'"
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
@@ -136,7 +136,7 @@
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
             >
               <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
-                6th Form Study
+                HPC's
               </h2>
             </div>
           </div>
@@ -146,7 +146,7 @@
       <div class="col">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
-          :to="'/hackathons/'"
+          :to="'/competitions/'"
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
@@ -159,7 +159,7 @@
             <div
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
             >
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Hackathons</h2>
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Competitions</h2>
             </div>
           </div>
         </Nuxt-Link>
@@ -192,7 +192,7 @@
       <div class="col">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
-          :to="'/lectures/'"
+          :to="'/events/'"
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
@@ -206,7 +206,7 @@
               class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
             >
               <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
-                Lectures
+                Events
               </h2>
             </div>
           </div>

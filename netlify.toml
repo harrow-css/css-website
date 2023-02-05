@@ -5,3 +5,21 @@
 [dev]
   port = 8888
   targetPort = 3010
+
+[[redirects]]
+  from = "/lectures/*"
+  to = "/events/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hackathons/adventofcode"
+  to = "/competitions/adventofcode"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sixthformstudy"
+  to = "/hpc"
+  status = 301
+  force = true

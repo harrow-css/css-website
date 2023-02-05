@@ -4,11 +4,11 @@
       <div class="container-fluid py-5">
         <div class="row align-items-start">
           <div class="col my-auto">
-            <h1 class="display-2 fw-bold">Lectures</h1>
+            <h1 class="display-2 fw-bold">Events</h1>
           </div>
           <div class="col my-auto">
             <p class="col-md-8 fs-4 text-md-end float-md-end">
-              Check out past and upcoming lectures
+              Check out past and upcoming lectures and workshops
             </p>
           </div>
         </div>
@@ -21,7 +21,7 @@
       <div class="col" v-for="lecture in (lectures.filter(lecture => (new Date(lecture.date)) > (Date.now()))).sort((a, b) => new Date(a.date) - new Date(b.date))" v-bind:key="lecture._id">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
-          :to="'/lectures/'+lecture._id"
+          :to="'/events/'+lecture._id"
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow"
@@ -39,12 +39,12 @@
       </div>
     </div>
 
-    <h1 class="my-3">Completed Lectures</h1>
+    <h1 class="my-3">Completed</h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div class="col" v-for="lecture in (lectures.filter(lecture => (new Date(lecture.date)) < (Date.now()))).sort((a, b) => new Date(b.date) - new Date(a.date))" v-bind:key="lecture._id">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
-          :to="'/lectures/'+lecture._id"
+          :to="'/events/'+lecture._id"
         >
           <div
             class="card card-cover h-100 overflow-hidden rounded-4 shadow"

@@ -30,23 +30,22 @@ const postDatabaseandEmail = async (db,body) => {
     const points = body.points
     const reason = body.reason
 
-    // add the points to the user
-    // increment the count for the reason
-    const dbreq = await db.collection("users").updateOne({ _id: id }, { $inc: { "points": body.points } });
+    // add the points to the user, and also add the reason to an array called record, with a date
+    datern = new Date();
+    const dbreq = await db.collection("users").updateOne({ _id: id }, { $inc: { "points": body.points }, $push: { "record": { "reason": body.reason, "points": body.points, "date":  datern} } });
     console.log(dbreq)
 
     // get user with id to get email address, then send email
     const user = await db.collection('users').findOne({ _id : id })
-
     console.log(user)
 
     var transporter = nodemailer.createTransport({
       service: 'hotmail',
       auth: {
-        user: process.env.EMAILUSERNAME,
-        pass: process.env.EMAILPASSWORD,
-      },
-    })
+        user: 'harrowschoolcss@outlook.com',
+        pass: 'cookesuite1572@'
+      }
+    });
       
     var mailOptions = {
     from: 'The Harrow School CSS Team <harrowschoolcss@outlook.com> ',
@@ -390,6 +389,8 @@ const postDatabaseandEmail = async (db,body) => {
     }
     });
 
+  
+
   return {
     statusCode: 201,
   }
@@ -402,7 +403,14 @@ module.exports.handler = async (event, context) => {
 
   const db = await connectToDatabase(MONGODB_URI)
 
+  console.log(event)
   
+  // verify the auth token
+  const token = event.headers.Authorization
+  console.log(token)
+
+  
+
 
   // get body of request
   const body = JSON.parse(event.body)
