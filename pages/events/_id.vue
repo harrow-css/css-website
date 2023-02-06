@@ -17,7 +17,19 @@
             <h5>In {{ lecture.Location }} on {{ ( new Date(lecture.date)).toLocaleDateString()}} at {{ ( new Date(lecture.date)).toLocaleTimeString()}}</h5>
 
 
-            <span class="mt-3" v-html="lecture.content"></span>
+            <span class="my-3" v-html="lecture.content"></span>
+
+            <div v-if="lecture.slides" class="my-3">
+              <h3>Lecture Slides</h3>
+              <span class="mt-3" v-html="lecture.slides"></span>
+            </div>
+
+            <div v-if="lecture.writeup" class="my-3">
+              <h3>Lecture writeup</h3>
+              <h5>By {{lecture.writeup.author}}</h5>
+              <span class="mt-3" v-html="lecture.writeup.text"></span>
+
+            </div>
             
         </div>
         
