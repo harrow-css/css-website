@@ -43,8 +43,12 @@ const queryDatabase = async (db,id ) => {
 
   const lastWeeksWinners = await db
     .collection("memes")
-    .find({ "round.startday":  lastlastMondayString, "banned": {$ne: true}, "place": { $exists: true } })
+    .find({ "round.startday":  lastlastMondayString, "banned": {$ne: true} })
+    // sort by the amount of items in the array votes
+    .sort({ "votes": -1 })
+    .limit(3)
     .toArray();
+  
 
   // get the date in yyyy-mm-dd
   let lastMondayString = lastMonday.toISOString().split('T')[0]

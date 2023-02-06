@@ -45,7 +45,7 @@ module.exports.handler = async (event, context) => {
     body: JSON.stringify({
       calendar: {
         '2023-01-23': 'Programming', 
-        '2023-01-30': 'School Life at Harrow',
+        '2023-01-30': 'Programming',
         '2023-02-06': 'Video Games',
         '2023-02-13': 'Sports',
         '2023-02-13': 'Harrow',

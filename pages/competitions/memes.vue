@@ -75,9 +75,9 @@
     </div>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col">
+      <div class="col" v-for="meme, place in submittingStatus.lastWeeksWinners">
         <div class="card shadow-sm">
-          <div class="card-body fw-bold display-4">1st Place</div>
+          <div class="card-body fw-bold display-4"><span v-if="place==0">1st Place</span> <span v-if="place==1">2nd Place</span><span v-if="place==2">3rd Place</span></div>
           
 
     
@@ -87,7 +87,7 @@
                   >
                     <img
                       :src="
-                        'https://ucarecdn.com/' + submittingStatus.lastWeeksWinners.filter((meme) => { return meme.place == 1})[0].meme +'/'
+                        'https://ucarecdn.com/' + meme.meme +'/'
                       "
                       alt="meme"
                       style="height: 225px; overflow:hidden;"
@@ -96,78 +96,16 @@
 
           <div class="card-body">
             <p class="card-text">{{
-            submittingStatus.lastWeeksWinners.filter(
-            (meme) => {
-              return meme.place == 1
-            }
-          )[0].user.name
-          }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card shadow-sm">
-          <div class="card-body fw-bold display-4">2nd Place</div>
-          
-
-    
-          <div
-                    style="display: block; text-align: center; height: 225px; overflow:hidden;"
-                    class="primarystyledcard rounded"
-                  >
-                    <img
-                      :src="
-                        'https://ucarecdn.com/' + submittingStatus.lastWeeksWinners.filter((meme) => { return meme.place == 2})[0].meme +'/'
-                      "
-                      alt="meme"
-                      style="height: 225px; overflow:hidden;"
-                    />
-                  </div>
-
-          <div class="card-body">
-            <p class="card-text">{{
-            submittingStatus.lastWeeksWinners.filter(
-            (meme) => {
-              return meme.place == 2
-            }
-          )[0].user.name
-          }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card shadow-sm">
-          <div class="card-body fw-bold display-4">Mod Choice</div>
-          
-
-    
-          <div
-                    style="display: block; text-align: center; height: 225px; overflow:hidden;"
-                    class="primarystyledcard rounded"
-                  >
-                    <img
-                      :src="
-                        'https://ucarecdn.com/' + submittingStatus.lastWeeksWinners.filter((meme) => { return meme.place == 3})[0].meme +'/'
-                      "
-                      alt="meme"
-                      style="height: 225px; overflow:hidden;"
-                    />
-                  </div>
-
-          <div class="card-body">
-            <p class="card-text">{{
-            submittingStatus.lastWeeksWinners.filter(
-            (meme) => {
-              return meme.place == 3
-            }
-          )[0].user.name
+              meme.user.name
           }}</p>
           </div>
         </div>
       </div>
     </div>
+
+      
+
+      
 
     <div class="row my-3" v-show="votingTime">
       <h1 class="col text-start">Vote for your favourite 🗳️</h1>
