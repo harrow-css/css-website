@@ -15,6 +15,53 @@
       </div>
     </div>
 
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-5">
+      <div class="col">
+        <Nuxt-Link
+          style="text-decoration: none; color: inherit"
+          :to="'memes/'"
+        >
+          <div
+            class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
+            v-bind:style="
+              'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' +
+              require(`~/assets/images/cssmemes.jpg`) +
+              '); '
+            "
+          >
+            <div
+              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
+            >
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Memes</h2>
+            </div>
+          </div>
+        </Nuxt-Link>
+      </div>
+
+      <div class="col">
+        <Nuxt-Link
+          style="text-decoration: none; color: inherit"
+          :to="'adventofcode/'"
+        >
+          <div
+            class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
+            v-bind:style="
+              'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' +
+              require(`~/assets/images/adventofcode.jpg`) +
+              '); '
+            "
+          >
+            <div
+              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
+            >
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Advent of Code</h2>
+            </div>
+          </div>
+        </Nuxt-Link>
+      </div>
+
+    </div>
+
     <div class="row align-items-md-stretch mb-4">
       <div class="col-md-12 mb-4">
         <div
@@ -134,6 +181,13 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover !important;
+  transition: 0.3s;
+}
+
 .secondarystyledcard > h1 {
   font-size: 2rem;
 }

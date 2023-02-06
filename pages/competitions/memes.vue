@@ -120,12 +120,12 @@
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
           style="color: white"
         >
-          <h1>Voting Times</h1>
+          <h1>Voting Times 🕒</h1>
 
           <h5>Submissions close <b>every Sunday at 9pm.</b></h5>
 
           <!-- convert nextSaturdayDate (a timer in milliseconds) to countdown in seconds, mins, hours and days -->
-          <h1>Voting Rules</h1>
+          <h1>Voting Rules ⚖️</h1>
           <ul>
             <li>You can only vote once</li>
             <li>You cannot vote for yourself</li>
@@ -209,7 +209,7 @@
           class="h-100 p-5 secondarystyledcard rounded-3 shadow d-flex flex-column"
           style="color: white"
         >
-          <h1>Submitting Times</h1>
+          <h1>Submitting Times 🕒</h1>
           <h5>Submissions close <b>every Saturday at 2pm.</b></h5>
 
           <!-- convert nextSaturdayDate (a timer in milliseconds) to countdown in seconds, mins, hours and days -->
@@ -296,7 +296,7 @@
             seconds</span
           >
 
-          <h1>Submitting Rules</h1>
+          <h1>Submitting Rules ⚖️</h1>
           <ul>
             <li>
               <strong>Memes only.</strong> Please do not submit images that are
@@ -367,7 +367,7 @@
           <br />
 
           <div v-show="submittingRules">
-            <h1>Upload your meme</h1>
+            <h1>Upload your meme 📁</h1>
             <h5>
               This week's topic is <u>{{ thisWeeksCompetition.topic }}</u>
             </h5>
