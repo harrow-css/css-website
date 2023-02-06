@@ -140,6 +140,8 @@ export default {
   },
   ssr: false,
 
+  plugins: ['@/plugins/vue-gtag'],
+
   // auth: {
   //   strategies: {
   //     local: {
