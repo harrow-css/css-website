@@ -373,7 +373,7 @@
             </h5>
             <p>
               You're allowed to upload
-              {{ 2 - submittingStatus.usermemes.length }} memes. <br />
+              {{ 2 - thisWeeksUserMemes.length }} memes. <br />
               Memes can only be uploaded once, and cannot be reuploaded or
               edited
             </p>
@@ -387,7 +387,7 @@
               <div class="col">
                 <div
                   class="card shadow-sm"
-                  v-if="submittingStatus.usermemes[0]"
+                  v-if="thisWeeksUserMemes[0]"
                 >
                   <div
                     style="display: block; text-align: center; height: 225px"
@@ -396,7 +396,7 @@
                     <img
                       :src="
                         'https://ucarecdn.com/' +
-                        submittingStatus.usermemes[0].meme +
+                        thisWeeksUserMemes[0].meme +
                         '/'
                       "
                       alt="meme"
@@ -411,7 +411,7 @@
 
                 <div
                   class="card shadow-sm"
-                  v-if="!submittingStatus.usermemes[0]"
+                  v-if="!thisWeeksUserMemes[0]"
                 >
                   <div
                     v-if="submittingMemes[1].status == 'uploading...'"
@@ -470,7 +470,7 @@
               <div class="col">
                 <div
                   class="card shadow-sm"
-                  v-if="submittingStatus.usermemes[1]"
+                  v-if="thisWeeksUserMemes[1]"
                 >
                   <div
                     style="display: block; text-align: center; height: 225px"
@@ -479,7 +479,7 @@
                     <img
                       :src="
                         'https://ucarecdn.com/' +
-                        submittingStatus.usermemes[1].meme +
+                        thisWeeksUserMemes[1].meme +
                         '/'
                       "
                       alt="meme"
@@ -494,7 +494,7 @@
 
                 <div
                   class="card shadow-sm"
-                  v-if="!submittingStatus.usermemes[1]"
+                  v-if="!thisWeeksUserMemes[1]"
                 >
                   <div
                     v-if="submittingMemes[2].status == 'uploading...'"
@@ -555,9 +555,9 @@
             <button
               class="btn btn-primary mt-3"
               @click="submitMemes()"
-              :disabled="submittingStatus.usermemes.length >= 2"
+              :disabled="thisWeeksUserMemes.length >= 2"
             >
-              <span v-if="submittingStatus.usermemes.length < 2">Submit</span>
+              <span v-if="thisWeeksUserMemes.length < 2">Submit</span>
               <span v-else
                 >You've hit your submission limit for this week!</span
               >
@@ -565,7 +565,7 @@
 
             <br />
             <br />
-            <h3 v-if="submittingStatus.usermemes.length >= 1">
+            <h3 v-if="thisWeeksUserMemes.length >= 1">
               Make sure to look out for voting from <u>Saturday at 2pm</u>!
             </h3>
           </div>
@@ -712,6 +712,23 @@ exampleModal.addEventListener('show.bs.modal', (event) => {
         }
       },
     },
+    thisWeeksUserMemes:{ 
+      get() {
+        // get the date of last monday
+        let lastMonday = new Date()
+
+        lastMonday.setDate(
+          lastMonday.getDate() - ((lastMonday.getDay() + 6) % 7)
+        )
+
+        // get the date in yyyy-mm-dd
+        let lastMondayString = lastMonday.toISOString().split('T')[0]
+
+        // return memes in submittingStatus.usermemes that are from this week
+        return this.submittingStatus.usermemes.filter(meme => meme.round.startday == lastMondayString)
+
+      }
+    },
     votingTime: {
       get() {
         // return true if the day is saturday after 2pm or sunday before 9pm
@@ -818,6 +835,8 @@ exampleModal.addEventListener('show.bs.modal', (event) => {
 
       // const form = new FormData();
       formData.append('UPLOADCARE_PUB_KEY', '3d395e3f484a5b742e04')
+      // UPLOADCARE_AUTOSTORE = true;
+      formData.append('UPLOADCARE_STORE	', '1')
       // form.append('my_file.jpg', File(['<data goes here>'], 'my_file.jpg'));
 
       this.submittingMemes[num].status = 'uploading...'
