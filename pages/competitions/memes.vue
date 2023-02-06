@@ -462,6 +462,7 @@
                         type="file"
                         id="uploadMemesInput1"
                         @change="uploadFile(1)"
+                        accept="image/*"
                       />
                     </form>
                   </div>
@@ -545,6 +546,7 @@
                         type="file"
                         id="uploadMemesInput2"
                         @change="uploadFile(2)"
+                        accept="image/*"
                       />
                     </form>
                   </div>
