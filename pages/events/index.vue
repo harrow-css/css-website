@@ -80,6 +80,7 @@
   background-size: cover !important;
   transition: 0.3s;
 }
+
 </style>
 
 <script>
