@@ -24,7 +24,7 @@ let dynamicRoutes = async () => {
 
   client.close();
 
-  return lectures.map(lecture => `/lectures/${lecture._id}`)
+  return lectures.map(lecture => `/events/${lecture._id}`)
 }
 
 export default {
