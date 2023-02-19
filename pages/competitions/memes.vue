@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <div class="row my-3">
+    <div class="row my-3" v-if="submittingStatus.lastWeeksWinners.length>0">
       <h1 class="col text-start">Last Week's Winners 🥇</h1>
       <h1 class="col text-end">
         Topic: <strong>{{ lastWeeksCompetition.topic }}</strong>
@@ -783,9 +783,12 @@ exampleModal.addEventListener('show.bs.modal', (event) => {
     async submitMemes() {
       console.log('submitting memes')
       // check if the user has submitted meme 1
+
+      this.updateSubmittingStatus()
+
       if (
         this.submittingMemes[1].status == 'done' &&
-        !this.submittingStatus.usermemes[0]
+        !this.thisWeeksUserMemes[0]
       ) {
         // submit using a post request to the api
         const response = await this.$axios.$post('postMeme', {
@@ -807,7 +810,7 @@ exampleModal.addEventListener('show.bs.modal', (event) => {
 
       if (
         this.submittingMemes[2].status == 'done' &&
-        !this.submittingStatus.usermemes[1]
+        !this.thisWeeksUserMemes[1]
       ) {
         // submit using a post request to the api
         const response = await this.$axios.$post('postMeme', {
