@@ -570,6 +570,8 @@
             <h3 v-if="thisWeeksUserMemes.length >= 1">
               Make sure to look out for voting from <u>Saturday at 2pm</u>!
             </h3>
+
+            <h3 v-if="thisWeeksUserMemes.length >= 1"><a href="https://arxiv.org/ftp/arxiv/papers/2112/2112.11850.pdf">Check this out while you wait!</a></h3>
           </div>
         </div>
       </div>
