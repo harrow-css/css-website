@@ -8,7 +8,6 @@ let cachedDb = null;
 // import jwt
 const jwt = require('jsonwebtoken');
 
-
 const connectToDatabase = async (uri) => {
   // we can cache the access to our database to speed things up a bit
   // (this is the only thing that is safe to cache here)
@@ -52,7 +51,6 @@ const queryDatabase = async (db,id ) => {
     .sort({ "votes": -1 })
     .limit(3)
     .toArray();
-  
 
   // get the date in yyyy-mm-dd
   let lastMondayString = lastMonday.toISOString().split('T')[0]
@@ -85,7 +83,6 @@ module.exports.handler = async (event, context) => {
 
   const db = await connectToDatabase(MONGODB_URI);
   
-
   // get user id from userId param
   const id = event.queryStringParameters.userId;
 

@@ -8,6 +8,8 @@ const DB_NAME = 'test';
 var nodemailer = require('nodemailer');
 
 let cachedDb = null;
+//require jwt
+const jwt = require('jsonwebtoken');
 
 const connectToDatabase = async (uri) => {
   // we can cache the access to our database to speed things up a bit
@@ -403,17 +405,29 @@ module.exports.handler = async (event, context) => {
 
   const db = await connectToDatabase(MONGODB_URI)
 
-  console.log(event)
-  
-  // verify the auth token
-  const token = event.headers.Authorization
-  console.log(token)
+  // parse the microsoft token in the authorization header
+  const token = event.headers.authorization.split(' ')[1]
+  const decoded = jwt.decode(token, { complete: true })
+  const user = decoded.payload
 
-  
+  console.log(user.oid)
 
+  // check the database for the user
+  const userInDb = await db.collection('users').findOne({ _id: user.oid })
+
+  // check if the user.admin field is true
+  if (!userInDb.admin) {
+    return {
+      statusCode: 401,
+    }
+  }
 
   // get body of request
   const body = JSON.parse(event.body)
 
   return postDatabaseandEmail(db,body)
+
+  return {
+    statusCode: 201,
+  }
 }
