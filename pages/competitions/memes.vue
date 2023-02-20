@@ -380,7 +380,9 @@
             <p></p>
           </div>
 
-          <div v-show="submittingRules">
+          <p>The site has encountered an error, and i'm working on it -Dylan</p>
+
+          <!-- <div v-show="submittingRules">
             <div
               class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 text-black"
             >
@@ -572,7 +574,7 @@
             </h3>
 
             <h6 style="color:white;" v-if="thisWeeksUserMemes.length >= 1"><a href="https://arxiv.org/ftp/arxiv/papers/2112/2112.11850.pdf">Check this out while you wait!</a></h6>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
