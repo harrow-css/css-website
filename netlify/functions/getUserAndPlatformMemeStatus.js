@@ -80,5 +80,7 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   const db = await connectToDatabase(MONGODB_URI);
-  return queryDatabase(db);
+
+  // get user id fr
+  return queryDatabase(db,);
 };
