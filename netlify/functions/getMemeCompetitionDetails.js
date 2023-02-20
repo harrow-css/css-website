@@ -49,6 +49,9 @@ module.exports.handler = async (event, context) => {
         '2023-02-06': 'Video Games',
         '2023-02-13': 'Sports',
         '2023-02-13': 'Harrow',
+        '2023-02-20': 'World Politics 2023',
+        '2023-02-27': 'Any Memes (no topic)',
+        
       },
     }),
   }
