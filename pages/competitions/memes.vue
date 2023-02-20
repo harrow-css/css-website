@@ -380,9 +380,8 @@
             <p></p>
           </div>
 
-          <p>The site has encountered an error, and i'm working on it -Dylan</p>
-
-          <!-- <div v-show="submittingRules">
+        
+          <div v-show="submittingRules">
             <div
               class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 text-black"
             >
@@ -574,7 +573,7 @@
             </h3>
 
             <h6 style="color:white;" v-if="thisWeeksUserMemes.length >= 1"><a href="https://arxiv.org/ftp/arxiv/papers/2112/2112.11850.pdf">Check this out while you wait!</a></h6>
-          </div> -->
+          </div> 
         </div>
       </div>
     </div>
@@ -627,9 +626,16 @@ exampleModal.addEventListener('show.bs.modal', (event) => {
 
   },
 
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, $auth }) {
     const competitionDetails = await $axios.$get('getMemeCompetitionDetails')
-    const submittingStatus = await $axios.$get('getUserAndPlatformMemeStatus')
+    const submittingStatus = await $axios.$get(
+        'getUserAndPlatformMemeStatus',
+        {
+          params: {
+            userId: $auth.$storage.getUniversal('jwt_decoded').oid,
+          },
+        }
+      )
 
     return { competitionDetails, submittingStatus }
   },
@@ -878,7 +884,12 @@ exampleModal.addEventListener('show.bs.modal', (event) => {
     },
     async updateSubmittingStatus() {
       this.submittingStatus = await this.$axios.$get(
-        'getUserAndPlatformMemeStatus'
+        'getUserAndPlatformMemeStatus',
+        {
+          params: {
+            userId: this.$auth.$storage.getUniversal('jwt_decoded').oid,
+          },
+        }
       )
     },
   },

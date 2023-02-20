@@ -5,6 +5,10 @@ const DB_NAME = 'test';
 
 let cachedDb = null;
 
+// import jwt
+const jwt = require('jsonwebtoken');
+
+
 const connectToDatabase = async (uri) => {
   // we can cache the access to our database to speed things up a bit
   // (this is the only thing that is safe to cache here)
@@ -23,7 +27,7 @@ const queryDatabase = async (db,id ) => {
   // query the database for memes with the given id in user.id
   const memescreated = await db
     .collection("memes")
-    .find({ "user._id": id })
+    .find({ "user.id": id })
     .toArray();
 
   const userVotingstatus = {};
@@ -80,7 +84,10 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   const db = await connectToDatabase(MONGODB_URI);
+  
 
-  // get user id fr
-  return queryDatabase(db,);
+  // get user id from userId param
+  const id = event.queryStringParameters.userId;
+
+  return queryDatabase(db,id);
 };
