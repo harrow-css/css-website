@@ -91,6 +91,15 @@
             feature added later on.</i
           >
 
+          <br>
+          <br>
+
+          <p>
+          <span>HMSU Awarded: {{ viewuser.awardedHMSU || false}}</span><br>
+          <span>Tie Awarded: {{ viewuser.awardedTie || false}}</span>
+          <span>Pi Awarded: {{ viewuser.awardedpi || false}}</span>
+          </p>
+
             
           <h2 class="pt-3">Award points</h2>
 
