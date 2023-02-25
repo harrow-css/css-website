@@ -153,16 +153,23 @@
             />
           </div>
 
+         
+
           <div class="card-body">
             <div class="row d-flex align-items-center">
               <div class="col">
-               
+
+                  
+
+      
+
                   <button
                     class="btn btn-primary disabled "
                     v-if="
                       submission.votes.includes(
                         $auth.$storage.getUniversal('jwt_decoded').oid
-                      )
+                      ) && submission.user.id !=
+                        $auth.$storage.getUniversal('jwt_decoded').oid
                     "
                   >
                     Voted
@@ -175,6 +182,9 @@
                       )
 
                       && !userVoted
+
+                      && submission.user.id !=
+                        $auth.$storage.getUniversal('jwt_decoded').oid
                     "
                     @click="voteMeme(submission._id)"
                     :disabled="userVoted"

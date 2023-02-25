@@ -59,7 +59,7 @@ const queryDatabase = async (db,id ) => {
   const compVoting = await db
     .collection("memes")
     .find({ "round.startday":  lastMondayString, "banned": {$ne: true} })
-    .project({ "round" : 0, "user" : 0, "timestamp" : 0 })
+    .project({ "round" : 0, "timestamp" : 0 })
     .toArray();
 
   return {
