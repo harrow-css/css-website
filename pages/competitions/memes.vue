@@ -149,7 +149,11 @@
             
               :src="'https://ucarecdn.com/' + submission.meme + '/'"
               alt="meme"
-              style="height: 225px; overflow:hidden;"
+              style="max-height: 100%;
+    max-width: 100%;
+    height: 225px;
+    object-fit: contain;
+"
             />
           </div>
 
