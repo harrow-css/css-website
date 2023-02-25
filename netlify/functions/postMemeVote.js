@@ -24,6 +24,15 @@ const connectToDatabase = async (uri) => {
 }
 
 const postDatabase = async (db,data) => {
+  // if the user has already voted, don't let them vote again
+  // get the meme with id of data.id
+  const meme = await db.collection("memes").findOne({ "_id": ObjectId(data.memeId) })
+  // check if the user's id is in the votes array
+  if (meme.votes.includes(data.userVoting.id)) {
+    return {
+      statusCode: 304,
+    }
+  }
 
   console.log(data)
   console.log(data.userVoting.id)
@@ -46,6 +55,8 @@ module.exports.handler = async (event, context) => {
   // otherwise the connection will never complete, since
   // we keep the DB connection alive
   context.callbackWaitsForEmptyEventLoop = false
+
+  
 
   const db = await connectToDatabase(MONGODB_URI)
 
