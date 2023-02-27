@@ -97,7 +97,7 @@
           <div class="card-body">
             <p class="card-text">{{
               meme.user.name
-          }}</p>
+          }} </p>
           </div>
         </div>
       </div>
@@ -196,6 +196,7 @@
                     <span v-if="!userVoted">Vote</span
                     >
                   </button>
+               
                   <button class="btn btn-outline-danger" :data-bs-imageid="submission.meme" :data-bs-memeid="submission._id"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Report
                   </button>

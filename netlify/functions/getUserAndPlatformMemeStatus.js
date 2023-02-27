@@ -48,7 +48,7 @@ const queryDatabase = async (db,id ) => {
     .collection("memes")
     .find({ "round.startday":  lastlastMondayString, "banned": {$ne: true} })
     // sort by the amount of items in the array votes
-    .sort({ "votes": 1 })
+    .sort({ "votes": -1 })
     .limit(3)
     .toArray();
 
