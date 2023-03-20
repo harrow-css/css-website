@@ -53,6 +53,7 @@ module.exports.handler = async (event, context) => {
         '2023-02-27': 'Any Memes (no topic)',
         '2023-03-06': 'Video Games',
         '2023-03-13': 'Sports',
+        '2023-03-20': 'Science',
         
       },
     }),
