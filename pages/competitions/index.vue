@@ -82,6 +82,28 @@
         </Nuxt-Link>
       </div>
 
+       <div class="col">
+        <Nuxt-Link
+          style="text-decoration: none; color: inherit"
+          :to="'summerterm/'"
+        >
+          <div
+            class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
+            v-bind:style="
+              'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' +
+              require(`~/assets/images/bustchallenge.jpg`) +
+              '); '
+            "
+          >
+            <div
+              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
+            >
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Summer Term (Electric Dreams)</h2>
+            </div>
+          </div>
+        </Nuxt-Link>
+      </div>
+
     </div>
 
     <div class="row align-items-md-stretch mb-4">
