@@ -134,6 +134,7 @@
 
 <script>
 export default {
+  middleware: 'isAuthenticated',
   data() {
     return {
       viewuser: null,
