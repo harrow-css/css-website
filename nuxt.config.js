@@ -92,10 +92,14 @@ export default {
   buildModules: ['@nuxtjs/google-fonts', '@nuxtjs/moment'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/markdownit'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/markdownit', '@nuxt/content'],
 
   markdownit: {
     runtime: true, // Support `$md()`
+  },
+
+  content: {
+    // Options
   },
 
   auth: {

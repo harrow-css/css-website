@@ -45,7 +45,7 @@ const postDatabaseandEmail = async (db,body) => {
       service: 'hotmail',
       auth: {
         user: 'harrowschoolcss@outlook.com',
-        pass: 'cookesuite1572@'
+        pass: process.env.EMAILPASSWORD
       }
     });
       
