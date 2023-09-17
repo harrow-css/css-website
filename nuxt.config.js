@@ -8,7 +8,7 @@
 //  })
 // }
 
-let dynamicRoutes = async () => {
+let dynamicRoutesMongo = async () => {
   const MongoClient = require("mongodb").MongoClient;
 
   const MONGODB_URI = process.env.MONGODB_URI;
@@ -25,6 +25,23 @@ let dynamicRoutes = async () => {
   client.close();
 
   return lectures.map(lecture => `/events/${lecture._id}`)
+}
+
+let dynamicRoutesContent =  async () => {
+  const { $content } = require('@nuxt/content')
+  const files = await $content({ deep: true }).fetch()
+
+  return files.map(file => file.path === '/index' ? '/' : file.path.replace('2023-multithreading-main/', 'threads/').replace('/README',''))
+
+
+}
+
+let dynamicRoutesJoined = async () => {
+  const routesMongo = await dynamicRoutesMongo()
+  const routesContent = await dynamicRoutesContent()
+  const routesCustom = []
+
+  return [...routesMongo, ...routesContent, ...routesCustom]
 }
 
 export default {
@@ -79,7 +96,8 @@ export default {
   },
 
   generate: {
-    routes: dynamicRoutes
+    // include routes at dynamicRoutesMongo and dynamicRoutesContent
+    routes: dynamicRoutesJoined,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
