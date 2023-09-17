@@ -17,7 +17,7 @@ It's easy to get started:
 3. Come up with your thread proposal (including session structure and syllabus) by **Sep 4, 2023**
 4. We'll include your thread when announcing multithreading at the start of term
 
-For what an abstract or a thread proposal should look like, you may refer to the [CP Thread](cp/README.md). We also made a [thread proposal template](thread-proposal-template.md) to help you get started.
+For what an abstract or a thread proposal should look like, you may refer to the [CP Thread](cp/README.md). We also made a [thread proposal template](thread-proposal-template) to help you get started.
 
 ## Important Dates
 
