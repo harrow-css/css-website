@@ -12,6 +12,7 @@ export default {
     
     const page = await $content('2023-multithreading-main/'+$nuxt.$route.path.split('/threads/')[1]+'/README').fetch()
     
+    
     return {
       page
     } 
