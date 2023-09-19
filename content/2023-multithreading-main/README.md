@@ -1,6 +1,6 @@
 # CSS Multithreading Sessions
 
-**Quick Links**: | [CP Thread Homepage](cp/README.md) | [AI Thread Homepage](ai/README.md) | [FFT Thread Homepage](fft/README.md)
+**Quick Links**: | [CP Thread Homepage](cp) | [AI Thread Homepage](ai) | [FFT Thread Homepage](fft)
 
 **Table of Contents**
 * [Introduction](#introduction)
