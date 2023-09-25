@@ -39,7 +39,6 @@ const postDatabaseandEmail = async (db,body) => {
 
     // get user with id to get email address, then send email
     const user = await db.collection('users').findOne({ _id : id })
-    console.log(user)
 
     var transporter = nodemailer.createTransport({
       service: 'hotmail',
