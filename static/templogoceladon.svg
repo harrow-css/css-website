@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="73.184044mm"
-   height="72.73185mm"
-   viewBox="0 0 73.184044 72.73185"
+   width="70mm"
+   height="70mm"
+   viewBox="0 0 70 70"
    version="1.1"
    id="svg1"
    xml:space="preserve"
@@ -40,11 +40,13 @@
        id="rect5" /></defs><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(1.4712909,1.2774737)"><g
+     id="layer1"><g
        style="fill:#000000"
        id="g4"
-       transform="matrix(3.0493351,0,0,3.0304938,-1.4712908,-1.2774737)"><g
+       transform="matrix(3.0493351,0,0,3.0304938,-1.4712908,-1.2774737)"
+       inkscape:export-filename="g4.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><g
          id="g1"><rect
            fill="none"
            height="24"
@@ -60,9 +62,9 @@
              id="path1"
              style="fill:#b8ddb8;fill-opacity:1" /></g></g></g><text
        xml:space="preserve"
-       transform="matrix(0.30452251,0,0,0.33049681,7.7119819,-0.50419492)"
+       transform="matrix(0.30452251,0,0,0.33049681,8.2732479,-0.22356192)"
        id="text5"
-       style="font-size:74.6667px;white-space:pre;shape-inside:url(#rect5);display:inline;fill:#b8ddb8;fill-opacity:1"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:74.6667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect5);display:inline;fill:#b8ddb8;fill-opacity:1"><tspan
          x="10.595703"
          y="119.73398"
          id="tspan1">CSS</tspan></text></g></svg>
