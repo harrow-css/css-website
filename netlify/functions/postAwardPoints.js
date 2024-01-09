@@ -47,6 +47,8 @@ const postDatabaseandEmail = async (db,body) => {
         pass: process.env.EMAILPASSWORD
       }
     });
+
+    console.log(process.env.EMAILPASSWORD)
       
     var mailOptions = {
     from: 'The Harrow School CSS Team <harrowschoolcss@outlook.com> ',
