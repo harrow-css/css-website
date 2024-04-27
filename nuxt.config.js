@@ -36,13 +36,15 @@
 
 // }
 
-// let dynamicRoutesJoined = async () => {
-//   const routesMongo = await dynamicRoutesMongo()
-//   const routesContent = await dynamicRoutesContent()
-//   const routesCustom = []
+let dynamicRoutesJoined = async () => {
+  // const routesMongo = await dynamicRoutesMongo()
+  // const routesContent = await dynamicRoutesContent()
+   const routesMongo = []
+  const routesContent = []
+  const routesCustom = []
 
-//   return [...routesMongo, ...routesContent, ...routesCustom]
-// }
+  return [...routesMongo, ...routesContent, ...routesCustom]
+}
 
 export default {
   server: {
