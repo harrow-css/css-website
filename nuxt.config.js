@@ -8,41 +8,41 @@
 //  })
 // }
 
-let dynamicRoutesMongo = async () => {
-  const MongoClient = require("mongodb").MongoClient;
+// let dynamicRoutesMongo = async () => {
+//   const MongoClient = require("mongodb").MongoClient;
 
-  const MONGODB_URI = process.env.MONGODB_URI;
-  const DB_NAME = 'test';
+//   const MONGODB_URI = process.env.MONGODB_URI;
+//   const DB_NAME = 'test';
 
-  const client = await MongoClient.connect(MONGODB_URI, {
-    useUnifiedTopology: true,
-  });
+//   const client = await MongoClient.connect(MONGODB_URI, {
+//     useUnifiedTopology: true,
+//   });
 
-  const db = client.db(DB_NAME);
+//   const db = client.db(DB_NAME);
 
-  const lectures = await db.collection("lectures").find({}, {"name":1, "_id":1, "image":1, "content":0, "date":1, "location":0, "speakers":0 }).sort([['timestamp', -1]]).toArray();
+//   const lectures = await db.collection("lectures").find({}, {"name":1, "_id":1, "image":1, "content":0, "date":1, "location":0, "speakers":0 }).sort([['timestamp', -1]]).toArray();
 
-  client.close();
+//   client.close();
 
-  return lectures.map(lecture => `/events/${lecture._id}`)
-}
+//   return lectures.map(lecture => `/events/${lecture._id}`)
+// }
 
-let dynamicRoutesContent =  async () => {
-  const { $content } = require('@nuxt/content')
-  const files = await $content({ deep: true }).fetch()
+// let dynamicRoutesContent =  async () => {
+//   const { $content } = require('@nuxt/content')
+//   const files = await $content({ deep: true }).fetch()
 
-  return files.map(file => file.path === '/index' ? '/' : file.path.replace('2023-multithreading-main/', 'threads/').replace('/README',''))
+//   return files.map(file => file.path === '/index' ? '/' : file.path.replace('2023-multithreading-main/', 'threads/').replace('/README',''))
 
 
-}
+// }
 
-let dynamicRoutesJoined = async () => {
-  const routesMongo = await dynamicRoutesMongo()
-  const routesContent = await dynamicRoutesContent()
-  const routesCustom = []
+// let dynamicRoutesJoined = async () => {
+//   const routesMongo = await dynamicRoutesMongo()
+//   const routesContent = await dynamicRoutesContent()
+//   const routesCustom = []
 
-  return [...routesMongo, ...routesContent, ...routesCustom]
-}
+//   return [...routesMongo, ...routesContent, ...routesCustom]
+// }
 
 export default {
   server: {
