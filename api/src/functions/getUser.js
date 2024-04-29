@@ -12,7 +12,7 @@ app.http('getUser', {
     // we keep the DB connection alive
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const client = await MongoClient.connect(uri, {
+    const client = await MongoClient.connect(MONGODB_URI, {
       useUnifiedTopology: true,
     });
 
