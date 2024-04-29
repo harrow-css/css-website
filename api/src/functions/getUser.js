@@ -8,6 +8,8 @@ app.http('getUser', {
   methods: ['GET', 'POST'],
   authLevel: 'anonymous',
   handler: async (event, context) => {
+
+    context.log(MONGODB_URI);
     // otherwise the connection will never complete, since
     // we keep the DB connection alive
     context.callbackWaitsForEmptyEventLoop = false;
