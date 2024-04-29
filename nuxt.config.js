@@ -197,7 +197,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: '/.netlify/functions/',
+    //baseURL: '/.netlify/functions/',
+    baseURL: '/api/'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
