@@ -56,9 +56,6 @@ app.http('createProject', {
     // get query string parameter called 'data'
     const user = JSON.parse(event.body).user
   
-    console.log(data)
-    console.log(user)
-  
     return postDatabase(db,data)
   }
 });
