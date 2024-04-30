@@ -6,9 +6,6 @@ const DB_NAME = 'test';
 
 let cachedDb = null;
 
-// import jwt
-const jwt = require('jsonwebtoken');
-
 const connectToDatabase = async (uri) => {
   // we can cache the access to our database to speed things up a bit
   // (this is the only thing that is safe to cache here)
