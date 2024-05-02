@@ -185,27 +185,14 @@
                 <td>1</td>
                 <td>8</td>
               </tr>
-              <tr>
-                <td>Solving a hackathon challenge question (+ unique solution)</td>
-                <td>1</td>
-                <td>8</td>
-              </tr>
+
               <tr>
                 <td>Attending a lecture</td>
                 <td>0.5</td>
                 <td>4</td>
               </tr>
 
-              <tr>
-                <td>Winner of <a style="color:white;" href="/memes">weekly meme competition</a> &nbsp; <span class="badge bg-primary">New</span></td>
-                <td>0.5</td>
-                <td>4</td>
-              </tr>
-               <tr>
-                <td>Runner up in <a style="color:white;" href="/memes">weekly meme competition</a> &nbsp; <span class="badge bg-primary">New</span></td>
-                <td>0.25</td> 
-                <td>2</td>
-              </tr>
+      
 
             </tbody>
           </table>
