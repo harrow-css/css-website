@@ -36,11 +36,17 @@ const queryDatabase = async (db) => {
   };
 };
 
-module.exports.handler = async (event, context) => {
-  // otherwise the connection will never complete, since
-  // we keep the DB connection alive
-  context.callbackWaitsForEmptyEventLoop = false;
+app.http('getLectures', {
+  methods: ['GET'],
+  authLevel: 'anonymous',
+  handler: async (event, context) => {
+    // otherwise the connection will never complete, since
+    // we keep the DB connection alive
+    context.callbackWaitsForEmptyEventLoop = false;
+  
+    const db = await connectToDatabase(MONGODB_URI);
+    return queryDatabase(db);
+  }
+});
 
-  const db = await connectToDatabase(MONGODB_URI);
-  return queryDatabase(db);
-};
+

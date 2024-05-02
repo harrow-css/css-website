@@ -123,28 +123,6 @@
       <div class="col">
         <Nuxt-Link
           style="text-decoration: none; color: inherit"
-          :to="'/threads/'"
-        >
-          <div
-            class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
-            v-bind:style="
-              'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' +
-              require(`~/assets/images/thread.jpg`) +
-              '); '
-            "
-          >
-            <div
-              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
-            >
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Threads</h2>
-            </div>
-          </div>
-        </Nuxt-Link>
-      </div>
-
-      <div class="col">
-        <Nuxt-Link
-          style="text-decoration: none; color: inherit"
           :to="'/hpc/'"
         >
           <div
@@ -161,28 +139,6 @@
               <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
                 HPC's
               </h2>
-            </div>
-          </div>
-        </Nuxt-Link>
-      </div>
-
-      <div class="col">
-        <Nuxt-Link
-          style="text-decoration: none; color: inherit"
-          :to="'/competitions/'"
-        >
-          <div
-            class="card card-cover h-100 overflow-hidden rounded-4 shadow mover"
-            v-bind:style="
-              'background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' +
-              require(`~/assets/images/hackathons.jpeg`) +
-              '); '
-            "
-          >
-            <div
-              class="d-flex flex-column h-100 px-5 pb-3 text-white text-shadow-1 pt-6"
-            >
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Competitions</h2>
             </div>
           </div>
         </Nuxt-Link>

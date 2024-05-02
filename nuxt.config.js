@@ -118,10 +118,6 @@ export default {
     runtime: true, // Support `$md()`
   },
 
-  content: {
-    // Options
-  },
-
   auth: {
     redirect: {
       callback: '/auth',
