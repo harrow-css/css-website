@@ -43,6 +43,6 @@ app.http('getUsers', {
     context.callbackWaitsForEmptyEventLoop = false;
   
     const db = await connectToDatabase(MONGODB_URI);
-    return queryDatabase(db, event.queryStringParameters.id);
+    return queryDatabase(db, event.query.get('id'));
   }
 });
