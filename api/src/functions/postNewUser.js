@@ -24,8 +24,6 @@ const connectToDatabase = async (uri) => {
 
 const postDatabase = async (db,data) => {
 
-    console.log(data)
-
     // check if the user already exists
     const user = await db.collection('users').findOne({ _id: data.oid })
 
@@ -57,14 +55,18 @@ app.http('postNewUser', {
   methods: ['GET', 'POST'],
   authLevel: 'anonymous',
   handler: async (event, context) => {
+
+  
     // otherwise the connection will never complete, since
     // we keep the DB connection alive
     context.callbackWaitsForEmptyEventLoop = false
   
     const db = await connectToDatabase(MONGODB_URI)
+
+    const body = await event.text()
   
     // get query string parameter called 'data'
-    const data = JSON.parse(event.body).data
+    const data = JSON.parse(body).data
   
     console.log(data)
   

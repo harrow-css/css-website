@@ -1,6 +1,12 @@
 export default function({ store, redirect , route}) {
-  if (!store.state.auth.loggedIn) {
+  if (route == '/auth/logon') {
 
+    store.$auth.$storage.setUniversal('redirect', '/getinvolved');
+
+    return
+  }
+  if (!store.state.auth.loggedIn) {
+    
     /* log the current page route to the console */
     console.log('redirecting to login page from: ' + route.path)
 
@@ -16,5 +22,8 @@ export default function({ store, redirect , route}) {
     } else {
       return redirect("/auth/errors/notharrowschool");
     }
+
+
+
   }
 }

@@ -402,7 +402,7 @@ const postDatabaseandEmail = async (db,body) => {
 }
 
 app.http('postAwardPoints', {
-  methods: ['GET', 'POST'],
+  methods: ['POST'],
   authLevel: 'anonymous',
   handler: async (event, context) => {
     // otherwise the connection will never complete, since

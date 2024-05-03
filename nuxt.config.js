@@ -92,8 +92,7 @@ export default {
         integrity:
           'sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2',
         crossorigin: 'anonymous',
-      },
-      { src: 'https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js' },
+      }
     ],
   },
 
@@ -112,7 +111,7 @@ export default {
   buildModules: ['@nuxtjs/google-fonts', '@nuxtjs/moment'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/markdownit', '@nuxt/content'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/markdownit'],
 
   markdownit: {
     runtime: true, // Support `$md()`
@@ -121,8 +120,10 @@ export default {
   auth: {
     redirect: {
       callback: '/auth',
+      home: false,
+      login: 'auth/logon',
+      logout: '/',
     },
-    rewriteRedirects : true,
     strategies: {
       aad: {
         scheme: 'oauth2',
@@ -132,8 +133,7 @@ export default {
           token:
             'https://login.microsoftonline.com/organizations/oauth2/v2.0/token',
           logout: false,
-          // get the user details from the /me endpoint
-          userInfo: '/getUser',
+
         },
         token: {
           property: 'access_token',
@@ -193,8 +193,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    //baseURL: '/.netlify/functions/',
-    baseURL: '/api/'
+    // baseURL: '/api/',
+    baseURL: 'http://localhost:7071/api/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
