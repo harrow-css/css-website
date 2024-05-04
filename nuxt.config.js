@@ -151,7 +151,7 @@ export default {
         grantType: 'authorization_code',
         accessType: 'offline',
         // ******** change this for your Application (Client) ID ********
-        clientId: 'bab96ac3-5d5d-4e17-9e08-6aa0109c090c',
+        clientId: '44d26139-5962-4f60-880a-2b0952be30d2',
         codeChallengeMethod: 'S256',
         scope: ['openid', 'profile'],
         autoLogout: true,
