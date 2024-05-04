@@ -14,7 +14,7 @@ export default {
       return this.$axios.post('/postNewUser', { data: userdata } )
         .then(response => {
           // Handle the response here
-          console.log(response)
+
           // Continue with the rest of your code
         })
         .catch(error => {

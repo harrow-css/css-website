@@ -1,5 +1,6 @@
 const { app } = require('@azure/functions');
 const MongoClient = require("mongodb").MongoClient;
+const jwt = require('jsonwebtoken');
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = 'test';
@@ -20,7 +21,7 @@ const connectToDatabase = async (uri) => {
   return cachedDb;
 };
 
-const queryDatabase = async (db,id ) => {
+const queryDatabase = async (db) => {
   // query the database for hackathons
   const user = await db.collection("users").find({}).toArray();
 
@@ -43,6 +44,23 @@ app.http('getUsers', {
     context.callbackWaitsForEmptyEventLoop = false;
   
     const db = await connectToDatabase(MONGODB_URI);
-    return queryDatabase(db, event.query.get('id'));
+
+    const token = event.headers.get('authorization')
+
+    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
+    const user = decoded.payload
+  
+    // check the database for the user
+    const userInDb = await db.collection('users').findOne({ _id: user.oid })
+  
+    // check if the user.admin field is true
+    if (!userInDb.admin) {
+      return {
+        statusCode: 401,
+      }
+    }
+    
+
+    return queryDatabase(db);
   }
 });

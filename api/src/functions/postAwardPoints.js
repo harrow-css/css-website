@@ -412,12 +412,10 @@ app.http('postAwardPoints', {
     const db = await connectToDatabase(MONGODB_URI)
   
     // parse the microsoft token in the authorization header
-    const token = event.headers.authorization.split(' ')[1]
-    const decoded = jwt.decode(token, { complete: true })
+    const token = event.headers.get('authorization')
+    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
     const user = decoded.payload
-  
-    console.log(user.oid)
-  
+
     // check the database for the user
     const userInDb = await db.collection('users').findOne({ _id: user.oid })
   
@@ -427,9 +425,9 @@ app.http('postAwardPoints', {
         statusCode: 401,
       }
     }
-  
+    
     // get body of request
-    const body = JSON.parse(event.body)
+    const body = JSON.parse(await event.text())
   
     return postDatabaseandEmail(db,body)
   

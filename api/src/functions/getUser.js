@@ -1,5 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 const { app } = require('@azure/functions');
+const jwt = require('jsonwebtoken');
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = 'test';
@@ -43,6 +44,13 @@ app.http('getUser', {
   
     const db = await connectToDatabase(MONGODB_URI);
 
-    return queryDatabase(db, request.query.get('id'));
+    // get the auth header from the incoming azure function request
+
+    const token = request.headers.get('authorization')
+
+    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
+    const user = decoded.payload
+
+    return queryDatabase(db, user.oid);
   }
 });
