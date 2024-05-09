@@ -46,7 +46,7 @@ app.http('getUser', {
 
     // get the auth header from the incoming azure function request
 
-    const token = request.headers.get('authorization')
+    const token = request.headers.get('Authorization')
 
     const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
     const user = decoded.payload
