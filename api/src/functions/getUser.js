@@ -65,6 +65,20 @@ app.http('getUser', {
     const user = decoded.payload;
     console.log("Decoded user from token: ", user); // Add logging here
 
+    return queryDatabase(db, {
+      "_id": "0fb02c42-ds-sd-b16f-dfssdfsf",
+      "family_name": "sdfdfsdfs",
+      "given_name": "fsdfsdf",
+      "points": 134,
+      "record": [
+        {
+          "reason": "Test: Attending a CSS Lecture (26/01/23)",
+          "points": 4,
+          "date": "2023-01-26T17:51:25.918Z"
+        },
+      ]
+    });
+
     return queryDatabase(db, user.oid);
   }
 });
