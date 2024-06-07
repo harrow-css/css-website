@@ -70,7 +70,7 @@ app.http('getUser', {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
+      body: JSON.stringify([{
         "_id": "0fb02c42-ds-sd-b16f-dfssdfsf",
         "family_name": "sdfdfsdfs",
         "given_name": "fsdfsdf",
@@ -82,7 +82,7 @@ app.http('getUser', {
             "date": "2023-01-26T17:51:25.918Z"
           },
         ]
-      }),
+      }]),
     };
 
     return queryDatabase(db, user.oid);
