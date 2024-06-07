@@ -67,7 +67,16 @@ app.http('getUser', {
 
     const user = decoded.payload;
     console.log("Decoded user from token: ", user); // Add logging here
-    return queryDatabase(db, '10f56da7-445f-445a-887a-98439bc6e998');
+
+    return {
+      statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userdetails: user }),
+    }
+
+    return queryDatabase(db, user.oid);
     //return queryDatabase(db, user.oid);
   }
 });
