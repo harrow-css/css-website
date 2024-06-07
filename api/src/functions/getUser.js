@@ -28,10 +28,10 @@ const queryDatabase = async (db, id) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: {userData: JSON.stringify(user),
+    body: JSON.stringify({userData: JSON.stringify(user),
           userId : id,
           dbPass : MONGODB_URI
-    },
+    }),
   };
 };
 
