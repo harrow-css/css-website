@@ -8,8 +8,6 @@ const DB_NAME = 'test';
 let cachedDb = null;
 
 const connectToDatabase = async (uri) => {
-  // we can cache the access to our database to speed things up a bit
-  // (this is the only thing that is safe to cache here)
   if (cachedDb) return cachedDb;
 
   const client = await MongoClient.connect(uri, {
@@ -21,9 +19,9 @@ const connectToDatabase = async (uri) => {
   return cachedDb;
 };
 
-const queryDatabase = async (db,id ) => {
-  // query the database for hackathons
-  const user = await db.collection("users").find({_id: id}).toArray();
+const queryDatabase = async (db, id) => {
+  const user = await db.collection("users").find({ _id: id }).toArray();
+  console.log("Database query result: ", user); // Add logging here
 
   return {
     statusCode: 200,
@@ -38,18 +36,34 @@ app.http('getUser', {
   methods: ['GET', 'POST'],
   authLevel: 'anonymous',
   handler: async (request, context) => {
-    // otherwise the connection will never complete, since
-    // we keep the DB connection alive
     context.callbackWaitsForEmptyEventLoop = false;
   
     const db = await connectToDatabase(MONGODB_URI);
 
-    // get the auth header from the incoming azure function request
+    const token = request.headers.get('Authorization');
+    if (!token) {
+      return {
+        statusCode: 401,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ error: "Authorization header is missing" }),
+      };
+    }
 
-    const token = request.headers.get('Authorization')
+    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true });
+    if (!decoded || !decoded.payload) {
+      return {
+        statusCode: 401,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ error: "Invalid token" }),
+      };
+    }
 
-    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
-    const user = decoded.payload
+    const user = decoded.payload;
+    console.log("Decoded user from token: ", user); // Add logging here
 
     return queryDatabase(db, user.oid);
   }
