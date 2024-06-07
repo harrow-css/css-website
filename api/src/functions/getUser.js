@@ -65,7 +65,7 @@ app.http('getUser', {
     const user = decoded.payload;
     console.log("Decoded user from token: ", user); // Add logging here
 
-    return queryDatabase(db, {
+    return {
       "_id": "0fb02c42-ds-sd-b16f-dfssdfsf",
       "family_name": "sdfdfsdfs",
       "given_name": "fsdfsdf",
@@ -77,7 +77,7 @@ app.http('getUser', {
           "date": "2023-01-26T17:51:25.918Z"
         },
       ]
-    });
+    };
 
     return queryDatabase(db, user.oid);
   }
