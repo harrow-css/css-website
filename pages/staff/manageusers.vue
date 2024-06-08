@@ -147,8 +147,8 @@ export default {
       search: '',
     }
   },
-  async asyncData({ $axios }) {
-    const users = await $axios.$get('getUsers')
+  async asyncData({ $axios, context }) {
+    const users = await $axios.$get('getUsers?id=' + context.app.$auth.$storage.getUniversal('jwt_decoded').oid)
     return { users }
   },
   computed: {

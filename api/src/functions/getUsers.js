@@ -44,14 +44,11 @@ app.http('getUsers', {
     context.callbackWaitsForEmptyEventLoop = false;
   
     const db = await connectToDatabase(MONGODB_URI);
+    
+    const userId = event.query.get('id');
 
-    const token = event.headers.get('authorization')
-
-    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
-    const user = decoded.payload
-  
     // check the database for the user
-    const userInDb = await db.collection('users').findOne({ _id: user.oid })
+    const userInDb = await db.collection('users').findOne({ _id: userId })
   
     // check if the user.admin field is true
     if (!userInDb.admin) {
