@@ -28,10 +28,7 @@ const queryDatabase = async (db, id) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({userData: JSON.stringify(user),
-          userId : id,
-          dbPass : MONGODB_URI
-    }),
+    body: JSON.stringify(user),
   };
 };
 
@@ -68,15 +65,6 @@ app.http('getUser', {
     const user = decoded.payload;
     console.log("Decoded user from token: ", user); // Add logging here
 
-    return {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userdetails: user }),
-    }
-
-    return queryDatabase(db, user.oid);
-    //return queryDatabase(db, user.oid);
+    return queryDatabase(db, request.query.get('id'));
   }
 });

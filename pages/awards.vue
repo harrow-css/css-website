@@ -252,7 +252,7 @@ export default {
   middleware: 'isAuthenticated',
   async asyncData(context) {
     const userpoints = await context.$axios.$get(
-      'getUser'
+      'getUser?id=' + context.app.$auth.$storage.getUniversal('jwt_decoded').oid
     )
 
     return {
