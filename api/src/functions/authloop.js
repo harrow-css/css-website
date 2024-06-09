@@ -48,13 +48,15 @@ app.http('authLoop', {
     // get user id from the request
     const userId = event.query.get('id')
 
-    authToken = event.headers.get('Authorization');
+    // get auth._token.aad cookie
+    const token = event.headers.get('Cookie');
 
-    const decoded = jwt.decode(authToken.replace("Bearer ", ""), { complete: true })
-    const user = decoded.payload;
+    // select the token from the cookie
+    const tokenArray = token.split(';');
+    const tokenString = tokenArray.find((element) => element.includes('auth._token.aad'));
+    const tokenValue = tokenString.split('=')[1];
 
 
-    // decode the token
     
 
     return {
@@ -62,7 +64,7 @@ app.http('authLoop', {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user }),
+        body: JSON.stringify({ tokenValue }),
     }
   }
 });
