@@ -411,13 +411,23 @@ app.http('postAwardPoints', {
   
     const db = await connectToDatabase(MONGODB_URI)
   
-    // parse the microsoft token in the authorization header
-    const token = event.headers.get('authorization')
+    // get auth._token.aad cookie
+    const token = event.headers.get('Cookie');
 
-    const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
-    const user = decoded.payload
+    // select the token from the cookie
+    const tokenArray = token.split(';');
+    const tokenString = tokenArray.find((element) => element.includes('auth._token.aad'));
+    const tokenValue = tokenString.split('=')[1];
 
-    // check the database for the user
+    // convert tokenValue from url encoded to text
+    const tokenValueDecoded = decodeURIComponent(tokenValue);
+    
+    // remove 'bearer ' from the token
+    const finaltoken = tokenValueDecoded.replace('Bearer ', '');
+
+    // parse the token with jwt decode
+    const user = jwt.decode(finaltoken);
+    
     const userInDb = await db.collection('users').findOne({ _id: user.oid })
   
     // check if the user.admin field is true

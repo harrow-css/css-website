@@ -56,7 +56,18 @@ app.http('authLoop', {
     const tokenString = tokenArray.find((element) => element.includes('auth._token.aad'));
     const tokenValue = tokenString.split('=')[1];
 
+    // convert tokenValue from url encoded to text
+    const tokenValueDecoded = decodeURIComponent(tokenValue);
 
+    console.log(tokenValueDecoded)
+    
+    // remove 'bearer ' from the token
+    const finaltoken = tokenValueDecoded.replace('Bearer ', '');
+
+    // parse the token with jwt decode
+    const decodedToken = jwt.decode(finaltoken);
+
+    const id = decodedToken.oid;
     
 
     return {
@@ -64,7 +75,7 @@ app.http('authLoop', {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ tokenValue }),
+        body: JSON.stringify({ token : id }),
     }
   }
 });
