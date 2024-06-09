@@ -413,6 +413,7 @@ app.http('postAwardPoints', {
   
     // parse the microsoft token in the authorization header
     const token = event.headers.get('authorization')
+
     const decoded = jwt.decode(token.replace("Bearer ", ""), { complete: true })
     const user = decoded.payload
 

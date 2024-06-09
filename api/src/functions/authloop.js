@@ -35,7 +35,7 @@ const queryDatabase = async (db) => {
 };
 
 
-app.http('getUsers', {
+app.http('authLoop', {
   methods: ['GET', 'POST'],
   authLevel: 'anonymous',
   handler: async (event, context) => {
@@ -48,19 +48,21 @@ app.http('getUsers', {
     // get user id from the request
     const userId = event.query.get('id')
 
-    console.log(event.headers.get('Authorization'));
+    authToken = event.headers.get('Authorization');
 
-    // check the database for the user
-    const userInDb = await db.collection('users').findOne({ _id: userId })
-  
-    // check if the user.admin field is true
-    if (!userInDb.admin) {
-      return {
-        statusCode: 401,
-      }
-    }
+    const decoded = jwt.decode(authToken.replace("Bearer ", ""), { complete: true })
+    const user = decoded.payload;
+
+
+    // decode the token
     
 
-    return queryDatabase(db);
+    return {
+        statusCode: 200,
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user }),
+    }
   }
 });
