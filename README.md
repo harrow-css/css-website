@@ -1,5 +1,9 @@
 # css-website-mixed
 
+https://docs.netlify.com/api-and-cli-guides/cli-guides/local-development/
+
+run netlify dev
+
 ## Build Setup
 
 ```bash
